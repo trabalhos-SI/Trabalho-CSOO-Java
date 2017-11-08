@@ -20,7 +20,7 @@ import javafx.stage.StageStyle;
 public class SistemaEADfx extends Application {
     
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage primaryStage) throws IOException{
         
         /*Método para remover borda do windows*/
         primaryStage.initStyle(StageStyle.UNDECORATED);
