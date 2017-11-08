@@ -9,6 +9,8 @@ import dao.AlunoDAOJDBC;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -49,7 +51,7 @@ public class TelaLoginController implements Initializable {
         
         btnLogar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event) throws IOException{
+            public void handle(ActionEvent event){
                 
                 AlunoDAOJDBC alunoDAO = new AlunoDAOJDBC();
                 
@@ -62,7 +64,12 @@ public class TelaLoginController implements Initializable {
                     Stage stage = new Stage();
                     String caminhoLogin1 = "/visao/TelaLogin.fxml"; // DEFINIR CAMINHO PARA TELA 1
         
-                    Parent chamadaLogin = FXMLLoader.load(getClass().getResource(caminhoLogin1));
+                    Parent chamadaLogin = null;
+                    try {
+                        chamadaLogin = FXMLLoader.load(getClass().getResource(caminhoLogin1));
+                    } catch (IOException ex) {
+                        Logger.getLogger(TelaLoginController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     Scene scene = new Scene(chamadaLogin);
                     stage.setScene(scene);
                     //primaryStage.setMaximized(true);
