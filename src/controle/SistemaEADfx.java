@@ -22,13 +22,13 @@ public class SistemaEADfx extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         
-        /*Método para remover borda dow windows*/
+        /*Método para remover borda do windows*/
         primaryStage.initStyle(StageStyle.UNDECORATED);
         
-        String nome = "/visao/TelaLogin.fxml";
+        String caminhoLogin = "/visao/TelaLogin.fxml";
         
-        Parent root = FXMLLoader.load(getClass().getResource(nome));
-        Scene scene = new Scene(root);
+        Parent chamadaLogin = FXMLLoader.load(getClass().getResource(caminhoLogin));
+        Scene scene = new Scene(chamadaLogin);
         primaryStage.setScene(scene);
         //primaryStage.setMaximized(true);
         primaryStage.show();
