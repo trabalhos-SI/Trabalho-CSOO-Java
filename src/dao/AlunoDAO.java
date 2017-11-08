@@ -5,10 +5,14 @@
  */
 package dao;
 
+import modelo.Aluno;
+
 /**
  *
  * @author Leandro
  */
-public class AlunoDAO {
+public interface AlunoDAO {
+    
+    public Aluno consultarLogin(String user, String password);
     
 }
