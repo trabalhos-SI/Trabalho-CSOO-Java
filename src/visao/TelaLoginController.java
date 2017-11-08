@@ -6,13 +6,16 @@
 package visao;
 
 import dao.AlunoDAOJDBC;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -38,14 +41,15 @@ public class TelaLoginController implements Initializable {
      * Initializes the controller class.
      * @param url
      * @param rb
+     * @throws java.io.IOException
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb){
         // TODO
         
         btnLogar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event) {
+            public void handle(ActionEvent event) throws IOException{
                 
                 AlunoDAOJDBC alunoDAO = new AlunoDAOJDBC();
                 
@@ -55,8 +59,15 @@ public class TelaLoginController implements Initializable {
                     
                 }else{
                     
-                    Stage stage  new Stage();
-                    Parent root = null;
+                    Stage stage = new Stage();
+                    String caminhoLogin1 = "/visao/TelaLogin.fxml"; // DEFINIR CAMINHO PARA TELA 1
+        
+                    Parent chamadaLogin = FXMLLoader.load(getClass().getResource(caminhoLogin1));
+                    Scene scene = new Scene(chamadaLogin);
+                    stage.setScene(scene);
+                    //primaryStage.setMaximized(true);
+                    stage.show();
+       
                     
                 }
             }
