@@ -13,6 +13,12 @@ import modelo.Aluno;
  */
 public interface AlunoDAO {
     
+    /**
+     * 
+     * @param user usuario do aluno.
+     * @param password senha do aluno.
+     * @return - Retornara um aluno pelo seu usuario e senha.
+     */
     public Aluno consultarLogin(String user, String password);
     
 }
