@@ -4,8 +4,6 @@
 
 .mainFxmlClass {
     -fx-background-color: none;
-    -fx-background-image: url('../imagens/ead.jpg');
-    -fx-background-repeat: no-repeat;
-    -fx-background-position: center;
-    -fx-background-position: 140px 20px;
+    -fx-background-image: url('../imagens/fundoLogin.jpg');
+    
 }
