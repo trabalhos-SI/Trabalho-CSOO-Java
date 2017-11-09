@@ -24,6 +24,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javax.swing.JOptionPane;
+import modelo.Aluno;
 
 /**
  * FXML Controller class
@@ -61,19 +62,30 @@ public class TelaLoginController implements Initializable {
                     
                 }else{
                     
-                    Stage stage = new Stage();
-                    String caminhoLogin1 = "/visao/TelaLogin.fxml"; // DEFINIR CAMINHO PARA TELA 1
-        
-                    Parent chamadaLogin = null;
-                    try {
-                        chamadaLogin = FXMLLoader.load(getClass().getResource(caminhoLogin1));
-                    } catch (IOException ex) {
-                        Logger.getLogger(TelaLoginController.class.getName()).log(Level.SEVERE, null, ex);
+                    Aluno aluno = new Aluno();
+                    
+                    aluno = alunoDAO.consultarLogin(txtUser.getText(), txtPass.getText());
+                    
+                    if(aluno.getTipo().equalsIgnoreCase("aluno")){
+                        
+                        Stage stage = new Stage();
+                        Parent root = null;
+                        
+                        try{
+                            root = FXMLLoader.load(getClass().getResource("/visao/TelaAlunoDesc.fxml"));
+                            
+                        }catch(IOException ex){
+                            JOptionPane.showMessageDialog(null, ex);
+                        }
+                        
+                        Scene scene = new Scene(root);
+                        stage.setScene(scene);
+                        stage.show();
+                        
+                        btnLogar.getScene().getWindow().hide();
                     }
-                    Scene scene = new Scene(chamadaLogin);
-                    stage.setScene(scene);
-                    //primaryStage.setMaximized(true);
-                    stage.show();
+                    
+                    
        
                     
                 }
