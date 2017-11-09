@@ -48,7 +48,7 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
                 stmt.close();
                 
             }else{
-                JOptionPane.showMessageDialog(null, "Usuário Não encontrado");
+                //JOptionPane.showMessageDialog(null, "Usuário Não encontrado");
                 return null;
             }
         }catch(SQLException e){
