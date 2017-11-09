@@ -5,16 +5,23 @@
  */
 package visao;
 
+import dao.AlunoDAOJDBC;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import modelo.Aluno;
 
 /**
  * FXML Controller class
  *
  * @author Leandro
  */
-public class TelaAlunoDescController implements Initializable {
+public class TelaAlunoDescController extends TelaLoginController implements Initializable {
+
+    @FXML
+    private Label lbTeste;
 
     /**
      * Initializes the controller class.
@@ -22,6 +29,12 @@ public class TelaAlunoDescController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
+        
+        
+             
+             
+        lbTeste.setText("Teste de transferencia de id para outra tela: " + AlunoDAOJDBC.idGeral);
     }    
     
 }

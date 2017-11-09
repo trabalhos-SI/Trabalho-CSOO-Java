@@ -19,6 +19,13 @@ import javafx.stage.StageStyle;
  */
 public class SistemaEADfx extends Application {
     
+    
+    
+    private static Stage stage;
+    private static Scene mainScene;
+    private static Scene detailsScene;
+            
+            
     @Override
     public void start(Stage primaryStage) throws IOException{
         
@@ -32,11 +39,14 @@ public class SistemaEADfx extends Application {
         primaryStage.setScene(scene);
         //primaryStage.setMaximized(true);
         primaryStage.show();
-       
-        
+      
 
     }
-
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -44,5 +54,6 @@ public class SistemaEADfx extends Application {
         launch(args);
         
     }
+   
     
 }

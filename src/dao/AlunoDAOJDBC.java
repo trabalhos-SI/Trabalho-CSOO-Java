@@ -5,11 +5,9 @@
  */
 package dao;
 
-import java.awt.HeadlessException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import modelo.Aluno;
 import tools.DAOBaseJDBC;
@@ -20,12 +18,15 @@ import tools.DAOBaseJDBC;
  */
 public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
     
+    public static int idGeral;
+    
+    
     @Override
     public Aluno consultarLogin(String loginUser, String loginPass){
         
         Aluno alunoLido = null;
         String consulta = 
-        "SELECT idAluno, nome, matricula, nascimento, email, telefone, tipo FROM aluno WHERE user = ? AND pass = ?";
+        "SELECT idAluno, nome, matricula, nascimento, email, telefone, tipo, user, pass FROM aluno WHERE user = ? AND pass = ?";
         try{
             PreparedStatement stmt = conn.prepareStatement(consulta);
             stmt.setString(1, loginUser);
@@ -42,6 +43,8 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
                 alunoLido.setEmail(resultado.getString("email"));
                 alunoLido.setTelefone(resultado.getString("telefone"));
                 alunoLido.setTipo(resultado.getString("tipo"));
+                alunoLido.setUsuario(resultado.getString("user"));
+                alunoLido.setSenha(resultado.getString("pass"));
                 stmt.close();
                 
             }else{
@@ -53,7 +56,10 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
             JOptionPane.showMessageDialog(null, "Erro no banco de dados: " + e.getMessage());
         }
         
+        idGeral = alunoLido.getIdAluno();
+        
         return alunoLido;
     }
     
+       
 }
