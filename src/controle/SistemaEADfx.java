@@ -19,13 +19,7 @@ import javafx.stage.StageStyle;
  */
 public class SistemaEADfx extends Application {
     
-    
-    
-    private static Stage stage;
-    private static Scene mainScene;
-    private static Scene detailsScene;
-            
-            
+              
     @Override
     public void start(Stage primaryStage) throws IOException{
         

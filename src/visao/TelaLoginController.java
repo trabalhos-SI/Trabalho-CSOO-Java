@@ -57,10 +57,7 @@ public class TelaLoginController implements Initializable {
         this.txtPass = txtPass;
     }
 
-      
-
-    
-    
+  
     
     /**
      * Initializes the controller class.
@@ -84,6 +81,8 @@ public class TelaLoginController implements Initializable {
                 if(alunoDAO.consultarLogin(txtUser.getText(), txtPass.getText()) == null){
                     
                     JOptionPane.showMessageDialog(null, "Usuário Não encontrado");
+                    txtUser.setText("");
+                    txtPass.setText("");
                     
                 }else{
                     
