@@ -25,7 +25,7 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
         
         Aluno alunoLido = null;
         String consulta = 
-        "SELECT idAaluno, nome, matricula, nascimento, email, telefone FROM Aluno WHERE user = ? AND password = ?";
+        "SELECT idAluno, nome, matricula, nascimento, email, telefone, tipo FROM aluno WHERE user = ? AND pass = ?";
         try{
             PreparedStatement stmt = conn.prepareStatement(consulta);
             stmt.setString(1, loginUser);
@@ -37,10 +37,11 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
                 alunoLido.setIdAluno(resultado.getInt("idAluno"));
                 alunoLido.setNome(resultado.getString("nome"));
                 alunoLido.setMatricula(resultado.getInt("matricula"));
-                SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
-                alunoLido.setNascimento(resultado.getString(fmt.format("nascimento")));
+                //SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
+                alunoLido.setNascimento(resultado.getString("nascimento"));
                 alunoLido.setEmail(resultado.getString("email"));
                 alunoLido.setTelefone(resultado.getString("telefone"));
+                alunoLido.setTipo(resultado.getString("tipo"));
                 stmt.close();
                 
             }else{

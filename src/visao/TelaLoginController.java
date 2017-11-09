@@ -66,7 +66,7 @@ public class TelaLoginController implements Initializable {
                     
                     aluno = alunoDAO.consultarLogin(txtUser.getText(), txtPass.getText());
                     
-                    if(aluno.getTipo().equalsIgnoreCase("aluno")){
+                    if(aluno.getTipo().equals("Aluno")){
                         
                         Stage stage = new Stage();
                         Parent root = null;
