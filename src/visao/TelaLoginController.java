@@ -105,6 +105,8 @@ public class TelaLoginController implements Initializable {
                         
                         Scene scene = new Scene(root);
                         stage.setScene(scene);
+                        stage.setResizable(false);
+                        stage.initStyle(StageStyle.UNDECORATED);
                         stage.show();
                         
                         btnLogar.getScene().getWindow().hide();

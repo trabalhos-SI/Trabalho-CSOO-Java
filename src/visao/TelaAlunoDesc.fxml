@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
 <?import java.util.*?>
@@ -7,11 +8,52 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visao.TelaAlunoDescController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="450.0" prefWidth="650.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visao.TelaAlunoDescController">
     <stylesheets>
         <URL value="@/estilo/telaalunodesc.css" />
     </stylesheets>
    <children>
-      <Label fx:id="lbTeste" layoutX="286.0" layoutY="183.0" text="Area do Aluno" />
+      <Label fx:id="lbTeste" layoutX="224.0" layoutY="381.0" text="Area do Aluno" />
+      <Pane prefHeight="450.0" prefWidth="150.0" style="-fx-background-color: #00BFFF;" />
+      <Label layoutX="189.0" layoutY="22.0" text="Dados">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="189.0" layoutY="90.0" text="Nome:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="190.0" layoutY="120.0" text="Curso:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="189.0" layoutY="151.0" text="Turma:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="191.0" layoutY="181.0" text="Matricula:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="191.0" layoutY="210.0" text="Data de Nascimento:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="192.0" layoutY="237.0" text="E-mail:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="191.0" layoutY="267.0" text="Telefone:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
