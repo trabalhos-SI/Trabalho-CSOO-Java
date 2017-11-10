@@ -34,6 +34,8 @@ import modelo.Aluno;
  */
 public class TelaLoginController implements Initializable {
 
+    static Aluno aluno;
+    
     @FXML
      TextField txtUser;
     @FXML
@@ -75,10 +77,14 @@ public class TelaLoginController implements Initializable {
             @Override
             public void handle(ActionEvent event){
                 
+                
+                
                 int idTeste;
                 AlunoDAOJDBC alunoDAO = new AlunoDAOJDBC();
                 
-                if(alunoDAO.consultarLogin(txtUser.getText(), txtPass.getText()) == null){
+                aluno = alunoDAO.consultarLogin(txtUser.getText(), txtPass.getText());
+                
+                if(aluno == null){
                     
                     JOptionPane.showMessageDialog(null, "Usuário Não encontrado");
                     txtUser.setText("");
@@ -86,9 +92,7 @@ public class TelaLoginController implements Initializable {
                     
                 }else{
                     
-                    Aluno aluno = new Aluno();
-                    
-                    aluno = alunoDAO.consultarLogin(txtUser.getText(), txtPass.getText());
+
                     idTeste = aluno.getIdAluno();
                     if(aluno.getTipo().equals("Aluno")){
                         
