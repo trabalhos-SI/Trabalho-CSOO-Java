@@ -37,7 +37,7 @@ public class TelaAlunoDescController extends TelaLoginController implements Init
          
              
              
-        lbTeste.setText("Teste de transferencia de id para outra tela: " + AlunoDAOJDBC.idGeral);
+        //lbTeste.setText("Teste de transferencia de id para outra tela: " + TelaLoginController.aluno.getEmail());
     }    
     
 }
