@@ -15,7 +15,7 @@ public class Aluno extends Usuario {
     
     private int idAluno;
     private String Curso;
-    private Set<Endereco> endereco;
+    private Endereco endereco;
 
     public Aluno(int idAluno) {
         this.idAluno = idAluno;
@@ -40,14 +40,14 @@ public class Aluno extends Usuario {
         this.Curso = Curso;
     }
 
-    public Set<Endereco> getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(Set<Endereco> endereco) {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-    
+
     
     
     
