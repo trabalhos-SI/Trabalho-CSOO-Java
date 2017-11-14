@@ -22,7 +22,7 @@ public class UsuarioDAOJDBC extends DAOBaseJDBC implements UsuarioDAO {
     public Usuario consultarLogin(String user, String password){
         
         Usuario usuarioProcurado = null;
-        String consulta = "SELECT idUsuario, tipo WHERE Login = ? AND Senha = ?";
+        String consulta = "SELECT idUsuario, tipo FROM usuario WHERE Login = ? AND Senha = ?";
         
         try{
             PreparedStatement stmt = conn.prepareStatement(consulta);
