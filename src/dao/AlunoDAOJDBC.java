@@ -35,16 +35,16 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
             
             if(resultado.next()){
                 alunoLido = new Aluno();
-                alunoLido.setIdAluno(resultado.getInt("idAluno"));
-                alunoLido.setNome(resultado.getString("nome"));
-                alunoLido.setMatricula(resultado.getInt("matricula"));
-                //SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
-                alunoLido.setNascimento(resultado.getString("nascimento"));
-                alunoLido.setEmail(resultado.getString("email"));
-                alunoLido.setTelefone(resultado.getString("telefone"));
-                alunoLido.setTipo(resultado.getString("tipo"));
-                alunoLido.setUsuario(resultado.getString("user"));
-                alunoLido.setSenha(resultado.getString("pass"));
+//                alunoLido.setIdAluno(resultado.getInt("idAluno"));
+//                alunoLido.setNome(resultado.getString("nome"));
+//                alunoLido.setMatricula(resultado.getInt("matricula"));
+//                //SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
+//                alunoLido.setNascimento(resultado.getString("nascimento"));
+//                alunoLido.setEmail(resultado.getString("email"));
+//                alunoLido.setTelefone(resultado.getString("telefone"));
+//                alunoLido.setTipo(resultado.getString("tipo"));
+//                alunoLido.setUsuario(resultado.getString("user"));
+//                alunoLido.setSenha(resultado.getString("pass"));
                 stmt.close();
                 
             }else{
@@ -56,7 +56,7 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
             JOptionPane.showMessageDialog(null, "Erro no banco de dados: " + e.getMessage());
         }
         
-        idGeral = alunoLido.getIdAluno();
+//        idGeral = alunoLido.getIdAluno();
         
         return alunoLido;
     }
