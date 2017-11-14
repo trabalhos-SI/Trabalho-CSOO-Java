@@ -35,7 +35,7 @@ public class TelaAlunoDescController extends AlunoDAOJDBC implements Initializab
         
         aluno = buscarAluno(TelaLoginController.usuario);
         
-        
+       
          
              
              
