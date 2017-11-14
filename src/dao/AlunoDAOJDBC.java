@@ -63,11 +63,8 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
                 dadosEndereco.setCidade(resultado.getString("Cidade"));
                 dadosEndereco.setEstado(resultado.getString("Estado"));
                 
-                Set<Endereco> endereco = new HashSet<Endereco>();
-                
-                endereco.add(dadosEndereco);
-                
-                alunoProcurado.setEndereco(endereco);
+                                
+                alunoProcurado.setEndereco(dadosEndereco);
                 
                 
             }else{
