@@ -14,8 +14,9 @@
         <URL value="@/estilo/telaalunodesc.css" />
     </stylesheets>
    <children>
-      <AnchorPane fx:id="P_Dados" layoutX="150.0" prefHeight="450.0" prefWidth="500.0" style="-fx-background-color: white;">
+      <AnchorPane fx:id="Tela_Dados" layoutX="150.0" prefHeight="450.0" prefWidth="500.0" style="-fx-background-color: white;">
          <children>
+            <Label fx:id="lb_tel" layoutX="124.0" layoutY="366.0" text="Label" />
             <Label layoutX="41.0" layoutY="100.0" prefWidth="50.0" text="Nome:">
                <font>
                   <Font name="System Bold" size="15.0" />
@@ -61,32 +62,19 @@
                </children>
             </Pane>
             <Label fx:id="lbTeste1" layoutX="90.0" layoutY="428.0" text="© Copyright 2017 - LFPP LTDA, todos os direitos reservados." />
-            <Label fx:id="lb_nome1" layoutX="107.0" layoutY="102.0" text="Label" />
-            <Label fx:id="lb_nome2" layoutX="107.0" layoutY="143.0" text="Label" />
-            <Label fx:id="lb_nome3" layoutX="107.0" layoutY="182.0" text="Label" />
-            <Label fx:id="lb_nome4" layoutX="135.0" layoutY="227.0" text="Label" />
-            <Label fx:id="lb_nome5" layoutX="177.0" layoutY="274.0" text="Label" />
-            <Label fx:id="lb_nome6" layoutX="111.0" layoutY="322.0" text="Label" />
-            <Label fx:id="lb_nome7" layoutX="124.0" layoutY="366.0" text="Label" />
+            <Label fx:id="lb_nome" layoutX="107.0" layoutY="102.0" text="Label" />
+            <Label fx:id="lb_curso" layoutX="107.0" layoutY="143.0" text="Label" />
+            <Label fx:id="lb_turma" layoutX="107.0" layoutY="182.0" text="Label" />
+            <Label fx:id="lb_matricula" layoutX="135.0" layoutY="227.0" text="Label" />
+            <Label fx:id="lb_data" layoutX="177.0" layoutY="274.0" text="Label" />
+            <Label fx:id="lb_email" layoutX="111.0" layoutY="322.0" text="Label" />
          </children>
       </AnchorPane>
-      <Pane prefHeight="460.0" prefWidth="150.0" style="-fx-background-color: GREY;">
-         <children>
-            <Button layoutX="7.0" layoutY="114.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="136.0" text="DADOS DO ALUNO">
-               <font>
-                  <Font name="System Bold Italic" size="12.0" />
-               </font></Button>
-            <Button layoutX="6.0" layoutY="242.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="136.0" text="DISCIPLINA">
-               <font>
-                  <Font name="System Bold Italic" size="12.0" />
-               </font>
-            </Button>
-         </children></Pane>
-      <AnchorPane fx:id="P_Disci" layoutX="149.0" prefHeight="460.0" prefWidth="511.0" style="-fx-background-color: white;">
+      <AnchorPane fx:id="Tela_Disci" layoutX="149.0" prefHeight="460.0" prefWidth="511.0" style="-fx-background-color: white;">
          <children>
             <Pane layoutX="17.0" layoutY="20.0" prefHeight="51.0" prefWidth="466.0" style="-fx-background-color: grey;">
                <children>
-                  <Label layoutX="185.0" layoutY="11.0" text="DISCIPLINA">
+                  <Label fx:id="lb_titulo" layoutX="185.0" layoutY="11.0" text="DISCIPLINA">
                      <font>
                         <Font name="System Bold Italic" size="20.0" />
                      </font>
@@ -94,19 +82,31 @@
                </children>
             </Pane>
             <Label fx:id="lbTeste11" layoutX="90.0" layoutY="428.0" text="© Copyright 2017 - LFPP LTDA, todos os direitos reservados." />
-            <TableView layoutX="23.0" layoutY="122.0" prefHeight="200.0" prefWidth="466.0">
+            <TableView fx:id="tb_disciplina" layoutX="23.0" layoutY="122.0" prefHeight="200.0" prefWidth="466.0">
               <columns>
                 <TableColumn prefWidth="86.0" text="Disciplina" />
-                <TableColumn prefWidth="88.0" text="Pol" />
-                  <TableColumn prefWidth="77.0" text="Por" />
+                <TableColumn prefWidth="88.0" text="Prova 1" />
+                  <TableColumn prefWidth="77.0" text="Prova 2" />
                   <TableColumn prefWidth="54.0" text="MP" />
                   <TableColumn prefWidth="54.0" text="PF" />
                   <TableColumn prefWidth="106.0" text="Média Final" />
               </columns>
             </TableView>
-            <Label layoutX="47.0" layoutY="350.0" text="* MP = Média Parcial" />
+            <Label fx:id="lb" layoutX="47.0" layoutY="350.0" text="* MP = Média Parcial" />
             <Label layoutX="47.0" layoutY="383.0" text="* PF = Prova Final" />
          </children>
       </AnchorPane>
+      <Pane prefHeight="460.0" prefWidth="150.0" style="-fx-background-color: GREY;">
+         <children>
+            <Button fx:id="btn_dados" layoutX="7.0" layoutY="114.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="136.0" text="DADOS DO ALUNO">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Button>
+            <Button fx:id="btn_disciplina" layoutX="6.0" layoutY="242.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="136.0" text="DISCIPLINA">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Button>
+         </children></Pane>
    </children>
 </AnchorPane>
