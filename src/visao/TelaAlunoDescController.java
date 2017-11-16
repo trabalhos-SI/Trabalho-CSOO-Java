@@ -19,11 +19,10 @@ import modelo.Aluno;
  *
  * @author Leandro
  */
-public class TelaAlunoDescController extends TelaLoginController implements Initializable {
+public class TelaAlunoDescController extends AlunoDAOJDBC implements Initializable {
 
     @FXML
-    private Label lbTeste;
-
+    
     /**
      * Initializes the controller class.
      * @param stage
@@ -34,6 +33,9 @@ public class TelaAlunoDescController extends TelaLoginController implements Init
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
+        aluno = buscarAluno(TelaLoginController.usuario);
+        
+       
          
              
              

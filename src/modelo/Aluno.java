@@ -5,53 +5,23 @@
  */
 package modelo;
 
+import java.util.Set;
+
 /**
  *
  * @author Leandro
  */
-public class Aluno {
+public class Aluno extends Usuario {
     
     private int idAluno;
-    private String nome;
-    private int matricula;
-    private String nascimento;
-    private String email;
-    private String telefone;
-    private String usuario;
-    private String senha;
-    private String tipo;
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-    
-    
-
-    public Aluno() {
-    }
+    private String Curso;
+    private Endereco endereco;
 
     public Aluno(int idAluno) {
         this.idAluno = idAluno;
+    }
+
+    public Aluno() {
     }
 
     public int getIdAluno() {
@@ -62,45 +32,24 @@ public class Aluno {
         this.idAluno = idAluno;
     }
 
-    public String getNome() {
-        return nome;
+    public String getCurso() {
+        return Curso;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setCurso(String Curso) {
+        this.Curso = Curso;
     }
 
-    public int getMatricula() {
-        return matricula;
+    public Endereco getEndereco() {
+        return endereco;
     }
 
-    public void setMatricula(int matricula) {
-        this.matricula = matricula;
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
-    public String getNascimento() {
-        return nascimento;
-    }
-
-    public void setNascimento(String nascimento) {
-        this.nascimento = nascimento;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
+    
+    
     
     
     

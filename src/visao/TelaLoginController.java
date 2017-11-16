@@ -5,13 +5,10 @@
  */
 package visao;
 
-import controle.SistemaEADfx;
-import dao.AlunoDAOJDBC;
+import dao.UsuarioDAOJDBC;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -25,7 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javax.swing.JOptionPane;
-import modelo.Aluno;
+import modelo.Usuario;
 
 /**
  * FXML Controller class
@@ -34,7 +31,7 @@ import modelo.Aluno;
  */
 public class TelaLoginController implements Initializable {
 
-    static Aluno aluno;
+    static Usuario usuario;
     
     @FXML
      TextField txtUser;
@@ -65,7 +62,6 @@ public class TelaLoginController implements Initializable {
      * Initializes the controller class.
      * @param url
      * @param rb
-     * @throws java.io.IOException
      */
     @Override
     public void initialize(URL url, ResourceBundle rb){
@@ -76,25 +72,20 @@ public class TelaLoginController implements Initializable {
         btnLogar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event){
+  
+                UsuarioDAOJDBC usuarioDAO = new UsuarioDAOJDBC();
                 
+                usuario = usuarioDAO.consultarLogin(txtUser.getText(), txtPass.getText());
                 
-                
-                int idTeste;
-                AlunoDAOJDBC alunoDAO = new AlunoDAOJDBC();
-                
-                aluno = alunoDAO.consultarLogin(txtUser.getText(), txtPass.getText());
-                
-                if(aluno == null){
+                if(usuario == null){
                     
                     JOptionPane.showMessageDialog(null, "Usuário Não encontrado");
                     txtUser.setText("");
                     txtPass.setText("");
                     
                 }else{
-                    
-
-                    idTeste = aluno.getIdAluno();
-                    if(aluno.getTipo().equals("Aluno")){
+     
+                    if(usuario.getTipo().equals("Aluno")){
                         
                         
                         Stage stage = new Stage();
@@ -110,28 +101,21 @@ public class TelaLoginController implements Initializable {
                         Scene scene = new Scene(root);
                         stage.setScene(scene);
                         stage.setResizable(false);
-                        stage.initStyle(StageStyle.UNDECORATED);
+                        //stage.initStyle(StageStyle.UNDECORATED);
                         stage.show();
                         
                         btnLogar.getScene().getWindow().hide();
+                    }else{
+                        
+                        
                     }
-                    
-                    
-       
-                    
+   
                 }
             }
         });{
-        
-        
-        
+
     }
-        
-        
-        
+ 
     }
-    
-   
-       
-    
+ 
 }
