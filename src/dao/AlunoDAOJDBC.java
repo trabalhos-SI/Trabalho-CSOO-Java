@@ -27,25 +27,28 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
     @Override
     public Aluno buscarAluno(Usuario usuario){
         
-        aluno.setLogin(usuario.getLogin());
-        aluno.setSenha(usuario.getSenha());
+//        aluno.setLogin(usuario.getLogin());
+//        aluno.setSenha(usuario.getSenha());
         
         Aluno alunoProcurado = null;
-        String consulta = "SELECT U.Nome, U.Email, U.Matricula, U.DataNascimento,"
-                + " A.idAluno, A.Curso, E.idEndereco, E.Rua, E.Bairro, E.Cidade, E.Estado"
-                + "FROM Usuario U INNER JOIN Aluno A"
-                + "ON U.idUsuario = A.idUsuario"
-                + "INNER JOIN Endereco E ON E.idEndereco = A.idEndereco"
-                + "WHERE Login = ? AND Senha = ? ";
+        String consulta = "SELECT Usuario.Nome, Usuario.Email, Usuario.Matricula, Usuario.DataNascimento,"
+                + " Aluno.idAluno, Aluno.Curso, Endereco.idEndereco, Endereco.Rua, Endereco.Bairro,"
+                + " Endereco.Cidade, Endereco.Estado"
+                + " FROM Usuario INNER JOIN Aluno"
+                + " ON Usuario.idUsuario = Aluno.Usuario_idUsuario"
+                + " INNER JOIN Endereco ON Endereco.idEndereco = Aluno.Endereco_idEndereco"
+                + " WHERE Login = ? AND Senha = ? ";
         
         try{
             PreparedStatement stmt = conn.prepareStatement(consulta);
-            stmt.setString(1, aluno.getLogin());
-            stmt.setString(2, aluno.getSenha());
+            stmt.setString(1, usuario.getLogin());
+            stmt.setString(2, usuario.getSenha());
             ResultSet resultado = stmt.executeQuery();
             
             if(resultado.next()){
                 alunoProcurado = new Aluno();
+                alunoProcurado.setLogin(usuario.getLogin());
+                alunoProcurado.setSenha(usuario.getSenha());
                 alunoProcurado.setIdAluno(resultado.getInt("idAluno"));
                 alunoProcurado.setNome(resultado.getString("Nome"));
                 alunoProcurado.setEmail(resultado.getString("Email"));

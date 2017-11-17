@@ -18,6 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import modelo.Aluno;
+import static visao.TelaLoginController.usuario;
 
 /**
  * FXML Controller class
@@ -62,7 +63,8 @@ public class TelaAlunoDescController extends AlunoDAOJDBC implements Initializab
        
     /**
      * Initializes the controller class.
-     * @param stage
+     * @param url
+     * @param rb
      */
        
     
@@ -70,29 +72,29 @@ public class TelaAlunoDescController extends AlunoDAOJDBC implements Initializab
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-        aluno = buscarAluno(TelaLoginController.usuario);
         
-         
+        aluno = buscarAluno(usuario);
+//        
+//         lb_nome.setText(aluno.getNome());
+
+       lb_curso.setText(aluno.getLogin());
              
        }
 
-    @FXML
-    private void initialize(MouseEvent event) {
-        
-        lb_nome.setText(aluno.getNome());
-        lb_curso.setText(aluno.getCurso());
-        //lb_turma.setText(aluno.s);
-        lb_matricula.setText(aluno.getMatricula());
-        lb_data.setText(aluno.getDataNascimento());
-        lb_email.setText(aluno.getEmail());
-        
-        
-    }
+//    @FXML
+//    private void initialize(MouseEvent event) {
+//        
+////        lb_nome.setText(aluno.getNome());
+////        lb_curso.setText(aluno.getCurso());
+////        //lb_turma.setText(aluno.s);
+////        lb_matricula.setText(aluno.getMatricula());
+////        lb_data.setText(aluno.getDataNascimento());
+////        lb_email.setText(aluno.getEmail());
+//        
+//        
+//    }
 
-    @FXML
-    private void initialize(ActionEvent event) {
-    }
-    
+        
     
     
 }

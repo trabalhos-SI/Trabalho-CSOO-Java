@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="visao.TesteController">
+    <stylesheets>
+        <URL value="@teste.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane fx:id="tela_2" layoutX="150.0" prefHeight="410.0" prefWidth="462.0" style="-fx-background-color: #fff;">
+         <children>
+            <Label layoutX="172.0" layoutY="153.0" prefHeight="49.0" prefWidth="116.0" text="TELA 2">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="410.0" prefWidth="150.0" style="-fx-background-color: blue;">
+         <children>
+            <Button fx:id="bt_1" layoutX="38.0" layoutY="69.0" mnemonicParsing="false" onAction="#initialize" prefHeight="49.0" prefWidth="74.0" text="TELA 1" />
+            <Button fx:id="bt_2" layoutX="35.0" layoutY="172.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="80.0" text="TELA 2" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="tela_1" layoutX="150.0" prefHeight="400.0" prefWidth="452.0" style="-fx-background-color: #fff;">
+         <children>
+            <Label fx:id="lb_1" layoutX="172.0" layoutY="153.0" prefHeight="49.0" prefWidth="116.0" text="TELA 1">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

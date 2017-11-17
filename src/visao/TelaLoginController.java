@@ -5,6 +5,8 @@
  */
 package visao;
 
+import com.sun.javaws.Main;
+import controle.SistemaEADfx;
 import dao.UsuarioDAOJDBC;
 import java.io.IOException;
 import java.net.URL;
@@ -19,6 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javax.swing.JOptionPane;
@@ -33,6 +36,7 @@ public class TelaLoginController implements Initializable {
 
     static Usuario usuario;
     
+   
     @FXML
      TextField txtUser;
     @FXML
@@ -67,8 +71,6 @@ public class TelaLoginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb){
         // TODO
         
-        
-        
         btnLogar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event){
@@ -89,22 +91,24 @@ public class TelaLoginController implements Initializable {
                         
                         
                         Stage stage = new Stage();
-                        Parent root = null;
+                        Parent root;
                         
                         try{
                             root = FXMLLoader.load(getClass().getResource("/visao/TelaAlunoDesc.fxml"));
+                            //stage.initStyle(StageStyle.TRANSPARENT);
+                            
+                           Scene scene = new Scene(root);
+                        stage.setScene(scene);
+                        stage.setResizable(false);
+                        stage.show();
                             
                         }catch(IOException ex){
                             JOptionPane.showMessageDialog(null, "erro aqui: " + ex);
                         }
                         
-                        Scene scene = new Scene(root);
-                        stage.setScene(scene);
-                        stage.setResizable(false);
-                        //stage.initStyle(StageStyle.UNDECORATED);
-                        stage.show();
                         
-                        //btnLogar.getScene().getWindow().hide();
+                        
+                        btnLogar.getScene().getWindow().hide();
                     }else{
                         
                         

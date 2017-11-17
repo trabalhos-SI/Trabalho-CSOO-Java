@@ -47,7 +47,7 @@
       </AnchorPane>
       <Pane prefHeight="460.0" prefWidth="150.0" style="-fx-background-color: GREY;">
          <children>
-            <Button fx:id="btn_dados" layoutX="7.0" layoutY="114.0" mnemonicParsing="false" onAction="#initialize" onMouseClicked="#initialize" prefHeight="64.0" prefWidth="136.0" text="DADOS DO ALUNO">
+            <Button fx:id="btn_dados" layoutX="7.0" layoutY="114.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="136.0" text="DADOS DO ALUNO">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font></Button>
