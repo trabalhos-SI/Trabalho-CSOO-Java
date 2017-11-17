@@ -19,10 +19,11 @@ import tools.DAOBaseJDBC;
 public class UsuarioDAOJDBC extends DAOBaseJDBC implements UsuarioDAO {
     
     @Override
-    public Usuario consultarLogin(String user, String password){
+    public  Usuario consultarLogin(String user, String password){
         
         Usuario usuarioProcurado = null;
-        String consulta = "SELECT idUsuario, tipo FROM usuario WHERE Login = ? AND Senha = ?";
+        String consulta = "SELECT idUsuario, tipo, Login, Senha FROM usuario WHERE Login = ? AND Senha = ?";
+       
         
         try{
             PreparedStatement stmt = conn.prepareStatement(consulta);
@@ -35,8 +36,8 @@ public class UsuarioDAOJDBC extends DAOBaseJDBC implements UsuarioDAO {
                 
                 usuarioProcurado.setIdUser(resultado.getInt("idUsuario"));
                 usuarioProcurado.setTipo(resultado.getString("tipo"));
-                usuarioProcurado.setLogin(resultado.getString("login"));
-                usuarioProcurado.setSenha(resultado.getString("senha"));
+                //usuarioProcurado.setLogin(resultado.getString("Login"));
+                //usuarioProcurado.setSenha(resultado.getString("Senha"));
                 stmt.close();
             }else{
                 return null;
@@ -48,5 +49,13 @@ public class UsuarioDAOJDBC extends DAOBaseJDBC implements UsuarioDAO {
    
         return usuarioProcurado;
     }
+
     
+//    public static void main(String[] args) {
+//     UsuarioDAOJDBC x = new UsuarioDAOJDBC();
+//        Usuario usuarioProcurado = x.consultarLogin("negraxa","842682");
+//        System.out.println("!!!"+ usuarioProcurado.getEmail());
+//        
+//    }
+
 }

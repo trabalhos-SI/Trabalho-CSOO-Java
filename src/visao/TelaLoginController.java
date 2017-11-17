@@ -95,7 +95,7 @@ public class TelaLoginController implements Initializable {
                             root = FXMLLoader.load(getClass().getResource("/visao/TelaAlunoDesc.fxml"));
                             
                         }catch(IOException ex){
-                            JOptionPane.showMessageDialog(null, ex);
+                            JOptionPane.showMessageDialog(null, "erro aqui: " + ex);
                         }
                         
                         Scene scene = new Scene(root);
@@ -104,7 +104,7 @@ public class TelaLoginController implements Initializable {
                         //stage.initStyle(StageStyle.UNDECORATED);
                         stage.show();
                         
-                        btnLogar.getScene().getWindow().hide();
+                        //btnLogar.getScene().getWindow().hide();
                     }else{
                         
                         
