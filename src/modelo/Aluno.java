@@ -16,12 +16,26 @@ public class Aluno extends Usuario {
     private int idAluno;
     private String Curso;
     private Endereco endereco;
+    public Usuario usuario;
+
+    
+    
+    
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
     public Aluno(int idAluno) {
         this.idAluno = idAluno;
     }
 
     public Aluno() {
+        this.endereco = new Endereco();
+        this.usuario = new Usuario();
     }
 
     public int getIdAluno() {

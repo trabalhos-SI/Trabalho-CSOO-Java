@@ -27,28 +27,23 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
     @Override
     public Aluno buscarAluno(Usuario usuario){
         
-//        aluno.setLogin(usuario.getLogin());
-//        aluno.setSenha(usuario.getSenha());
+        aluno.setLogin(usuario.getLogin());
+        aluno.setSenha(usuario.getSenha());
         
         Aluno alunoProcurado = null;
-        String consulta = "SELECT Usuario.Nome, Usuario.Email, Usuario.Matricula, Usuario.DataNascimento,"
-                + " Aluno.idAluno, Aluno.Curso, Endereco.idEndereco, Endereco.Rua, Endereco.Bairro,"
-                + " Endereco.Cidade, Endereco.Estado"
+        String consulta = "SELECT *"
                 + " FROM Usuario INNER JOIN Aluno"
                 + " ON Usuario.idUsuario = Aluno.Usuario_idUsuario"
                 + " INNER JOIN Endereco ON Endereco.idEndereco = Aluno.Endereco_idEndereco"
-                + " WHERE Login = ? AND Senha = ? ";
+                + " WHERE idUsuario = ?";
         
         try{
             PreparedStatement stmt = conn.prepareStatement(consulta);
-            stmt.setString(1, usuario.getLogin());
-            stmt.setString(2, usuario.getSenha());
+            stmt.setInt(1, usuario.getIdUser());
             ResultSet resultado = stmt.executeQuery();
             
             if(resultado.next()){
                 alunoProcurado = new Aluno();
-                alunoProcurado.setLogin(usuario.getLogin());
-                alunoProcurado.setSenha(usuario.getSenha());
                 alunoProcurado.setIdAluno(resultado.getInt("idAluno"));
                 alunoProcurado.setNome(resultado.getString("Nome"));
                 alunoProcurado.setEmail(resultado.getString("Email"));
@@ -68,7 +63,7 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
                 
                                 
                 alunoProcurado.setEndereco(dadosEndereco);
-                
+                alunoProcurado.setUsuario(usuario);
                 
             }else{
                 return null;
@@ -85,3 +80,5 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
     
        
 }
+
+

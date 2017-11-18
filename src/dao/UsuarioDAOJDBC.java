@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import modelo.Aluno;
 import modelo.Usuario;
 import tools.DAOBaseJDBC;
 
@@ -50,12 +51,6 @@ public class UsuarioDAOJDBC extends DAOBaseJDBC implements UsuarioDAO {
         return usuarioProcurado;
     }
 
-    
-//    public static void main(String[] args) {
-//     UsuarioDAOJDBC x = new UsuarioDAOJDBC();
-//        Usuario usuarioProcurado = x.consultarLogin("negraxa","842682");
-//        System.out.println("!!!"+ usuarioProcurado.getEmail());
-//        
-//    }
+
 
 }

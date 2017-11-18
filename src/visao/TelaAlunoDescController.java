@@ -72,12 +72,9 @@ public class TelaAlunoDescController extends AlunoDAOJDBC implements Initializab
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-        
         aluno = buscarAluno(usuario);
-//        
-//         lb_nome.setText(aluno.getNome());
 
-       lb_curso.setText(aluno.getLogin());
+        lb_curso.setText(aluno.getEmail());
              
        }
 

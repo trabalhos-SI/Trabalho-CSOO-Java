@@ -7,6 +7,8 @@ package visao;
 
 import com.sun.javaws.Main;
 import controle.SistemaEADfx;
+import dao.AlunoDAO;
+import dao.AlunoDAOJDBC;
 import dao.UsuarioDAOJDBC;
 import java.io.IOException;
 import java.net.URL;
@@ -25,6 +27,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javax.swing.JOptionPane;
+import modelo.Aluno;
 import modelo.Usuario;
 
 /**
@@ -80,7 +83,7 @@ public class TelaLoginController implements Initializable {
                 usuario = usuarioDAO.consultarLogin(txtUser.getText(), txtPass.getText());
                 
                 if(usuario == null){
-                    
+                 
                     JOptionPane.showMessageDialog(null, "Usuário Não encontrado");
                     txtUser.setText("");
                     txtPass.setText("");
@@ -89,25 +92,22 @@ public class TelaLoginController implements Initializable {
      
                     if(usuario.getTipo().equals("Aluno")){
                         
-                        
                         Stage stage = new Stage();
                         Parent root;
-                        
+                       
                         try{
                             root = FXMLLoader.load(getClass().getResource("/visao/TelaAlunoDesc.fxml"));
                             //stage.initStyle(StageStyle.TRANSPARENT);
                             
-                           Scene scene = new Scene(root);
-                        stage.setScene(scene);
-                        stage.setResizable(false);
-                        stage.show();
+                        Scene scene = new Scene(root);
+                            stage.setScene(scene);
+                            stage.setResizable(false);
+                            stage.show();
                             
                         }catch(IOException ex){
                             JOptionPane.showMessageDialog(null, "erro aqui: " + ex);
                         }
-                        
-                        
-                        
+   
                         btnLogar.getScene().getWindow().hide();
                     }else{
                         

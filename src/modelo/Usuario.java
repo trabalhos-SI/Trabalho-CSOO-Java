@@ -18,7 +18,7 @@ public class Usuario {
     private String matricula;
     private String dataNascimento;
     private String login;
-    private String senha;
+    private String senha;   
 
     public Usuario() {
     }
