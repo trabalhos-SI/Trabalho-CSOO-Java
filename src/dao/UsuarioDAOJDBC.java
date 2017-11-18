@@ -19,6 +19,8 @@ import tools.DAOBaseJDBC;
  */
 public class UsuarioDAOJDBC extends DAOBaseJDBC implements UsuarioDAO {
     
+    public static Usuario usuario;
+    
     @Override
     public  Usuario consultarLogin(String user, String password){
         
@@ -48,6 +50,7 @@ public class UsuarioDAOJDBC extends DAOBaseJDBC implements UsuarioDAO {
             JOptionPane.showMessageDialog(null, "Erro no banco de dados: - " + e.getMessage());
         }
    
+       
         return usuarioProcurado;
     }
 

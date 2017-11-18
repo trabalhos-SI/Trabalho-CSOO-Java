@@ -36,6 +36,7 @@ public class Aluno extends Usuario {
     public Aluno() {
         this.endereco = new Endereco();
         this.usuario = new Usuario();
+        
     }
 
     public int getIdAluno() {
