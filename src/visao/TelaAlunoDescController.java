@@ -25,7 +25,7 @@ import static visao.TelaLoginController.usuario;
  *
  * @author Leandro
  */
-public class TelaAlunoDescController extends AlunoDAOJDBC implements Initializable {
+public class TelaAlunoDescController  implements Initializable {
 
     @FXML
     private AnchorPane Tela_Dados;
@@ -59,7 +59,8 @@ public class TelaAlunoDescController extends AlunoDAOJDBC implements Initializab
     private Button btn_dados;
     @FXML
     private Button btn_disciplina;
-
+    
+    private AlunoDAOJDBC alunojdbc;
        
     /**
      * Initializes the controller class.
@@ -71,10 +72,12 @@ public class TelaAlunoDescController extends AlunoDAOJDBC implements Initializab
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
-        aluno = buscarAluno(usuario);
+        Aluno aluno;
+        alunojdbc = new AlunoDAOJDBC();       
+        aluno = alunojdbc.buscarAluno(usuario);
 
-        lb_curso.setText(aluno.getEmail());
+        lb_curso.setText(aluno.getCurso());
+        lb_nome.setText(aluno.usuario.getNome());
              
        }
 

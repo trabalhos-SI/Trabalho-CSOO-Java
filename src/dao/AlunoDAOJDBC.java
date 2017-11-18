@@ -21,64 +21,67 @@ import tools.DAOBaseJDBC;
  * @author Leandro
  */
 public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
-    
-    public static Aluno aluno;
-    
+
     @Override
-    public Aluno buscarAluno(Usuario usuario){
-        
-        aluno.setLogin(usuario.getLogin());
-        aluno.setSenha(usuario.getSenha());
-        
+    public Aluno buscarAluno(Usuario usuario) {
+
+
         Aluno alunoProcurado = null;
         String consulta = "SELECT *"
-                + " FROM Usuario INNER JOIN Aluno"
-                + " ON Usuario.idUsuario = Aluno.Usuario_idUsuario"
-                + " INNER JOIN Endereco ON Endereco.idEndereco = Aluno.Endereco_idEndereco"
-                + " WHERE idUsuario = ?";
-        
-        try{
+                + " FROM usuario INNER JOIN aluno"
+                + " ON usuario.idUsuario = aluno.Usuario_idUsuario"
+                + " INNER JOIN endereco ON endereco.idEndereco = Aluno.Endereco_idEndereco"
+                + " WHERE aluno.Usuario_idUsuario = ?";
+
+        try {
             PreparedStatement stmt = conn.prepareStatement(consulta);
             stmt.setInt(1, usuario.getIdUser());
             ResultSet resultado = stmt.executeQuery();
-            
-            if(resultado.next()){
+
+            if (resultado.next()) {
                 alunoProcurado = new Aluno();
                 alunoProcurado.setIdAluno(resultado.getInt("idAluno"));
-                alunoProcurado.setNome(resultado.getString("Nome"));
-                alunoProcurado.setEmail(resultado.getString("Email"));
-                alunoProcurado.setMatricula(resultado.getString("Matricula"));
-                alunoProcurado.setDataNascimento(resultado.getString("DataNascimento"));
-                alunoProcurado.setLogin(resultado.getString("Login"));
-                alunoProcurado.setSenha(resultado.getString("Senha"));
                 alunoProcurado.setCurso(resultado.getString("Curso"));
-                
+
                 Endereco dadosEndereco = new Endereco();
-                
+
                 dadosEndereco.setIdEndereco(resultado.getInt("idEndereco"));
                 dadosEndereco.setRua(resultado.getString("Rua"));
                 dadosEndereco.setBairro(resultado.getString("Bairro"));
                 dadosEndereco.setCidade(resultado.getString("Cidade"));
                 dadosEndereco.setEstado(resultado.getString("Estado"));
-                
-                                
+
+                Usuario dadoUsuario = new Usuario();
+
+                dadoUsuario.setDataNascimento(resultado.getString("DataNascimento"));
+
+                dadoUsuario.setLogin(resultado.getString("Login"));
+
+                dadoUsuario.setEmail(resultado.getString("Email"));
+
+                dadoUsuario.setIdUser(resultado.getInt("idUsuario"));
+
+                dadoUsuario.setMatricula(resultado.getString("Matricula"));
+
+                dadoUsuario.setSenha(resultado.getString("Senha"));
+
+                dadoUsuario.setTipo(resultado.getString("tipo"));
+
+                dadoUsuario.setNome(resultado.getString("Nome"));
+
                 alunoProcurado.setEndereco(dadosEndereco);
-                alunoProcurado.setUsuario(usuario);
-                
-            }else{
+                alunoProcurado.setUsuario(dadoUsuario);
+
+            } else {
                 return null;
             }
-            
-        }catch(SQLException e){
+
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro no banco de dados: - " + e.getMessage());
-            
+
         }
-        
+
         return alunoProcurado;
     }
-    
-    
-       
+
 }
-
-
