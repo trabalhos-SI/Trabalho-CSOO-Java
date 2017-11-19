@@ -74,10 +74,10 @@ public class TelaAlunoDescController implements Initializable {
         lb_curso.setText(aluno.getCurso());
         lb_nome.setText(aluno.usuario.getNome());
         lb_turma.setText(aluno.getTurma());
-        lb_matricula.setText(aluno.getMatricula());
-        lb_data.setText(aluno.getDataNascimento());
-        lb_email.setText(aluno.getEmail());
-        lb_tel.setText(aluno.getTelefone());
+        lb_matricula.setText(aluno.usuario.getMatricula());
+        lb_data.setText(aluno.usuario.getDataNascimento());
+        lb_email.setText(aluno.usuario.getEmail());
+        lb_tel.setText(aluno.usuario.getTelefone());
         
 
         

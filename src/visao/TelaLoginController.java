@@ -94,7 +94,7 @@ public class TelaLoginController implements Initializable {
                     
                 }else{
      
-                    if(usuario.getTipo().equals("Aluno")){
+                    if(usuario.getTipo() == 1){
                         
                         Stage stage = new Stage();
                         Parent root;

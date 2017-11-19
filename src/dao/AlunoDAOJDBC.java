@@ -29,9 +29,9 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
         Aluno alunoProcurado = null;
         String consulta = "SELECT *"
                 + " FROM usuario INNER JOIN aluno"
-                + " ON usuario.idUsuario = aluno.Usuario_idUsuario"
-                + " INNER JOIN endereco ON endereco.idEndereco = Aluno.Endereco_idEndereco"
-                + " WHERE aluno.Usuario_idUsuario = ?";
+                + " ON usuario.idUsuario = aluno.idUsuario"
+                + " INNER JOIN endereco ON endereco.idEndereco = Aluno.idEndereco"
+                + " WHERE aluno.idUsuario = ?";
 
         try {
             PreparedStatement stmt = conn.prepareStatement(consulta);
@@ -66,7 +66,7 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
 
                 dadoUsuario.setSenha(resultado.getString("Senha"));
 
-                dadoUsuario.setTipo(resultado.getString("TipoUsuario"));
+                dadoUsuario.setTipo(resultado.getInt("TipoUsuario"));
                 
                 dadoUsuario.setTelefone(resultado.getString("Telefone"));
 

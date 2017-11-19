@@ -12,7 +12,7 @@ package modelo;
 public class Usuario {
     
     private int idUser;
-    private String tipo;
+    private int tipo;
     private String nome;
     private String email;
     private String matricula;
@@ -46,13 +46,15 @@ public class Usuario {
         this.idUser = idUser;
     }
 
-    public String getTipo() {
+    public int getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(int tipo) {
         this.tipo = tipo;
     }
+
+    
 
     public String getNome() {
         return nome;
