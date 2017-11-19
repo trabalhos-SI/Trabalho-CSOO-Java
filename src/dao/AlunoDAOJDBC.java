@@ -42,6 +42,7 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
                 alunoProcurado = new Aluno();
                 alunoProcurado.setIdAluno(resultado.getInt("idAluno"));
                 alunoProcurado.setCurso(resultado.getString("Curso"));
+                alunoProcurado.setTurma(resultado.getString("Turma"));
 
                 Endereco dadosEndereco = new Endereco();
 
@@ -65,7 +66,9 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
 
                 dadoUsuario.setSenha(resultado.getString("Senha"));
 
-                dadoUsuario.setTipo(resultado.getString("tipo"));
+                dadoUsuario.setTipo(resultado.getString("TipoUsuario"));
+                
+                dadoUsuario.setTelefone(resultado.getString("Telefone"));
 
                 dadoUsuario.setNome(resultado.getString("Nome"));
 

@@ -15,8 +15,17 @@ public class Aluno extends Usuario {
     
     private int idAluno;
     private String Curso;
+    private String turma;
     private Endereco endereco;
     public Usuario usuario;
+
+    public String getTurma() {
+        return turma;
+    }
+
+    public void setTurma(String turma) {
+        this.turma = turma;
+    }
 
     
     

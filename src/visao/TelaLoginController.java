@@ -46,6 +46,10 @@ public class TelaLoginController implements Initializable {
     private Button btnLogar;
     @FXML
      PasswordField txtPass;
+    @FXML
+    private Button btnSair;
+    
+    
 
     public TextField getTxtUser() {
         return txtUser;
@@ -111,15 +115,23 @@ public class TelaLoginController implements Initializable {
                         btnLogar.getScene().getWindow().hide();
                     }else{
                         
+                        //CARREGAR A TELA DO PROFESSOR AQUI!
                         
                     }
    
                 }
             }
-        });{
+        });
 
+    
+              
+        
     }
- 
+
+    @FXML
+    private void handle(ActionEvent event) {
+        
+        System.exit(0);
     }
  
 }

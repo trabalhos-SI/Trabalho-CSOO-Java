@@ -23,7 +23,7 @@ public class UsuarioDAOJDBC extends DAOBaseJDBC implements UsuarioDAO {
     public  Usuario consultarLogin(String user, String password){
         
         Usuario usuarioProcurado = null;
-        String consulta = "SELECT idUsuario, tipo, Login, Senha FROM usuario WHERE Login = ? AND Senha = ?";
+        String consulta = "SELECT idUsuario, TipoUsuario, Login, Senha FROM usuario WHERE Login = ? AND Senha = ?";
        
         
         try{
@@ -36,7 +36,7 @@ public class UsuarioDAOJDBC extends DAOBaseJDBC implements UsuarioDAO {
                 usuarioProcurado = new Usuario();
                 
                 usuarioProcurado.setIdUser(resultado.getInt("idUsuario"));
-                usuarioProcurado.setTipo(resultado.getString("tipo"));
+                usuarioProcurado.setTipo(resultado.getString("TipoUsuario"));
                 usuarioProcurado.setLogin(resultado.getString("Login"));
                 usuarioProcurado.setSenha(resultado.getString("Senha"));
                 stmt.close();

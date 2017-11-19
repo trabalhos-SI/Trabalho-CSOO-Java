@@ -7,3 +7,13 @@
     -fx-background-image: url('../imagens/fundoLogin.jpg');
     
 }
+
+#btnLogar:hover{
+     -fx-background-color: white;
+     -fx-cursor: hand;
+}
+
+#btnSair:hover{
+    -fx-background-color: white;
+    -fx-cursor: hand;
+}

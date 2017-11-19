@@ -19,7 +19,18 @@ public class Usuario {
     private String dataNascimento;
     private String login;
     private String senha;   
+    private String telefone;
 
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    
+    
     public Usuario() {
     }
 
