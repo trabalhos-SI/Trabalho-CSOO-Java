@@ -2,74 +2,120 @@
 
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visao.TelaProfessorController">
+<AnchorPane id="AnchorPane" prefHeight="464.0" prefWidth="649.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visao.TelaProfessorController">
     <stylesheets>
         <URL value="@/estilo/telaprofessor.css" />
     </stylesheets>
    <children>
-      <AnchorPane fx:id="Tela_DadosProf" layoutX="150.0" layoutY="-2.0" prefHeight="455.0" prefWidth="522.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="150.0">
+      <AnchorPane fx:id="Tela_QuestoesProf" layoutX="150.0" layoutY="1.0" prefHeight="469.0" prefWidth="520.0" style="-fx-background-color: white;">
          <children>
-            <Label fx:id="lb_tel" layoutX="124.0" layoutY="366.0" />
-            <Label layoutX="41.0" layoutY="100.0" prefWidth="50.0" text="Nome:">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="41.0" layoutY="141.0" prefHeight="21.0" prefWidth="83.0" text="Formação:">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="41.0" layoutY="180.0" prefWidth="50.0" text="Título:">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="41.0" layoutY="225.0" prefHeight="21.0" prefWidth="94.0" text="Matrícula:">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="41.0" layoutY="272.0" prefHeight="21.0" prefWidth="164.0" text="Data Nascimento:">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="41.0" layoutY="321.0" prefHeight="21.0" prefWidth="94.0" text="E-Mail:">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="41.0" layoutY="364.0" prefHeight="21.0" prefWidth="70.0" text="Telefone:">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
+            <Label fx:id="lb_tel11" layoutX="124.0" layoutY="366.0" />
             <Pane layoutX="17.0" layoutY="20.0" prefHeight="51.0" prefWidth="466.0" style="-fx-background-color: grey;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                <children>
-                  <Label layoutX="198.0" layoutY="11.0" text="DADOS">
+                  <Label layoutX="190.0" layoutY="12.0" text="QUESTÕES">
                      <font>
                         <Font name="System Bold Italic" size="20.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
-            <Label fx:id="lbTeste1" layoutX="101.0" layoutY="428.0" text="© Copyright 2017 - LFPP LTDA, todos os direitos reservados." />
-            <Label fx:id="lb_nome" layoutX="107.0" layoutY="102.0" />
-            <Label fx:id="lb_formacao" layoutX="138.0" layoutY="143.0" />
-            <Label fx:id="lb_titulo" layoutX="107.0" layoutY="182.0" />
-            <Label fx:id="lb_matricula" layoutX="135.0" layoutY="227.0" />
-            <Label fx:id="lb_data" layoutX="177.0" layoutY="274.0" />
-            <Label fx:id="lb_email" layoutX="111.0" layoutY="322.0" />
-            <Label fx:id="lb_tel" layoutX="124.0" layoutY="366.0" />
+            <Label fx:id="lbTeste111" layoutX="100.0" layoutY="438.0" text="© Copyright 2017 - LFPP LTDA, todos os direitos reservados." />
          </children>
       </AnchorPane>
-      <Pane layoutY="-5.0" prefHeight="460.0" prefWidth="150.0" style="-fx-background-color: GREY;">
+      <AnchorPane fx:id="Tela_DadosProf" layoutX="150.0" prefHeight="469.0" prefWidth="520.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label fx:id="lb_tel" layoutX="124.0" layoutY="366.0" />
+            <Label alignment="TOP_LEFT" layoutX="109.0" layoutY="100.0" prefWidth="50.0" text="Nome:">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" layoutX="83.0" layoutY="141.0" prefHeight="21.0" prefWidth="83.0" text="Formação:">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" layoutX="113.0" layoutY="186.0" prefWidth="50.0" text="Título:">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" layoutX="91.0" layoutY="230.0" prefHeight="21.0" prefWidth="83.0" text="Matrícula:">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" layoutX="37.0" layoutY="272.0" prefHeight="21.0" prefWidth="129.0" text="Data Nascimento:">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" layoutX="112.0" layoutY="317.0" prefHeight="21.0" prefWidth="50.0" text="E-Mail:">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" layoutX="95.0" layoutY="361.0" prefHeight="21.0" prefWidth="70.0" text="Telefone:">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Pane layoutX="17.0" layoutY="20.0" prefHeight="51.0" prefWidth="466.0" style="-fx-background-color: grey;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+               <children>
+                  <Label layoutX="194.0" layoutY="12.0" text="DADOS">
+                     <font>
+                        <Font name="System Bold Italic" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label fx:id="lbTeste1" layoutX="102.0" layoutY="438.0" text="© Copyright 2017 - LFPP LTDA, todos os direitos reservados." />
+            <Label fx:id="lb_nomeProf" layoutX="171.0" layoutY="102.0" text="Label" />
+            <Label fx:id="lb_formacaoProf" layoutX="171.0" layoutY="143.0" text="Label" />
+            <Label fx:id="lb_tituloProf" layoutX="171.0" layoutY="188.0" text="Label" />
+            <Label fx:id="lb_matriculaProf" layoutX="172.0" layoutY="233.0" text="Label" />
+            <Label fx:id="lb_dataProf" layoutX="173.0" layoutY="274.0" text="Label" />
+            <Label fx:id="lb_emailProf" layoutX="173.0" layoutY="319.0" text="Label" />
+            <Label fx:id="lb_telefoneProf" layoutX="172.0" layoutY="363.0" text="Label" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="Tela_DisciplinaProf" layoutX="149.0" prefHeight="469.0" prefWidth="521.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="149.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label fx:id="lb_tel1" layoutX="124.0" layoutY="366.0" />
+            <Pane layoutX="17.0" layoutY="20.0" prefHeight="51.0" prefWidth="466.0" style="-fx-background-color: grey;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+               <children>
+                  <Label layoutX="174.0" layoutY="11.0" text="DISCIPLINA">
+                     <font>
+                        <Font name="System Bold Italic" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label fx:id="lbTeste11" layoutX="105.0" layoutY="438.0" text="© Copyright 2017 - LFPP LTDA, todos os direitos reservados." />
+            <ChoiceBox fx:id="cb_turma" layoutX="22.0" layoutY="99.0" prefHeight="30.0" prefWidth="166.0" />
+            <TableView layoutX="22.0" layoutY="158.0" prefHeight="200.0" prefWidth="466.0">
+               <columns>
+                  <TableColumn fx:id="cl_disciplinaProf" prefWidth="211.0" text="Aluno" />
+                  <TableColumn fx:id="cl_prova1Prof" prefWidth="48.0" text="Prova 1" />
+                  <TableColumn fx:id="cl_prova2Prof" prefWidth="52.0" text="Prova 2" />
+                  <TableColumn fx:id="cl_mpProf" prefWidth="40.0" text="MP" />
+                  <TableColumn fx:id="cl_pfProf" prefWidth="38.0" text="PF" />
+                  <TableColumn fx:id="cl_mediaFinalProf" prefWidth="76.0" text="Média Final" />
+               </columns>
+            </TableView>
+            <Label fx:id="lb" layoutX="31.0" layoutY="374.0" text="* MP = Média Parcial" />
+            <Label layoutX="31.0" layoutY="403.0" text="* PF = Prova Final" />
+         </children>
+      </AnchorPane>
+      <Pane prefHeight="470.0" prefWidth="152.0" style="-fx-background-color: GREY;">
          <children>
             <Button fx:id="btn_dadosProf" layoutX="7.0" layoutY="87.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="136.0" text="DADOS PROFESSOR" textAlignment="JUSTIFY" textOverrun="CLIP">
                <font>
