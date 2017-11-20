@@ -14,7 +14,46 @@ import java.util.Set;
 public class Professor extends Usuario {
     
     private int idProfessor;
-    private Set<Endereco> endereco;
+    private String titulo;
+    private String formacao;
+    private Endereco endereco;
+    public Usuario usuario;
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getFormacao() {
+        return formacao;
+    }
+
+    public void setFormacao(String formacao) {
+        this.formacao = formacao;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
+    
+    
+    
 
     public Professor() {
     }
@@ -31,14 +70,7 @@ public class Professor extends Usuario {
         this.idProfessor = idProfessor;
     }
 
-    public Set<Endereco> getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Set<Endereco> endereco) {
-        this.endereco = endereco;
-    }
-    
+        
     
      
 }

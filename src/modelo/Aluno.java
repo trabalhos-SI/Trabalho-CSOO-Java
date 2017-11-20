@@ -18,7 +18,19 @@ public class Aluno extends Usuario {
     private String turma;
     private Endereco endereco;
     public Usuario usuario;
+    private Set<Disciplina> disciplina;
 
+    public Set<Disciplina> getDisciplina() {
+        return disciplina;
+    }
+
+    public void setDisciplina(Set<Disciplina> disciplina) {
+        this.disciplina = disciplina;
+    }
+
+    
+    
+    
     public String getTurma() {
         return turma;
     }

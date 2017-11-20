@@ -5,10 +5,15 @@
  */
 package dao;
 
+import modelo.Aluno;
+import modelo.Professor;
+import modelo.Usuario;
+
 /**
  *
  * @author Leandro
  */
-public class ProfessorDAO {
+public interface ProfessorDAO {
     
+    public Professor buscarProfessor(Usuario usuario);
 }

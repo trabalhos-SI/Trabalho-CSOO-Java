@@ -102,8 +102,7 @@ public class TelaLoginController implements Initializable {
                         try{
                             root = FXMLLoader.load(getClass().getResource("/visao/TelaAlunoDesc.fxml"));
                             //stage.initStyle(StageStyle.TRANSPARENT);
-                            
-                        Scene scene = new Scene(root);
+                            Scene scene = new Scene(root);
                             stage.setScene(scene);
                             stage.setResizable(false);
                             stage.show();
@@ -111,11 +110,24 @@ public class TelaLoginController implements Initializable {
                         }catch(IOException ex){
                             JOptionPane.showMessageDialog(null, "erro aqui: " + ex);
                         }
-   
                         btnLogar.getScene().getWindow().hide();
                     }else{
                         
-                        //CARREGAR A TELA DO PROFESSOR AQUI!
+                        Stage stage = new Stage();
+                        Parent root;
+                       
+                        try{
+                            root = FXMLLoader.load(getClass().getResource("/visao/TelaProfessor.fxml"));
+                            //stage.initStyle(StageStyle.TRANSPARENT);
+                            Scene scene = new Scene(root);
+                            stage.setScene(scene);
+                            stage.setResizable(false);
+                            stage.show();
+                            
+                        }catch(IOException ex){
+                            JOptionPane.showMessageDialog(null, "erro aqui: " + ex);
+                        }
+                        btnLogar.getScene().getWindow().hide();
                         
                     }
    

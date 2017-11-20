@@ -10,8 +10,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javax.swing.JOptionPane;
 import modelo.Aluno;
+import modelo.Disciplina;
 import modelo.Endereco;
 import modelo.Usuario;
 import tools.DAOBaseJDBC;
@@ -22,6 +26,7 @@ import tools.DAOBaseJDBC;
  */
 public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
 
+  
     @Override
     public Aluno buscarAluno(Usuario usuario) {
 
@@ -31,6 +36,9 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
                 + " FROM usuario INNER JOIN aluno"
                 + " ON usuario.idUsuario = aluno.idUsuario"
                 + " INNER JOIN endereco ON endereco.idEndereco = Aluno.idEndereco"
+                + " INNER JOIN aluno_has_disciplina ON aluno.idAluno = aluno_has_disciplina.idAluno"
+                + " INNER JOIN disciplina ON disciplina.idDisciplina = aluno_has_disciplina.idDisciplina"
+                + " INNER JOIN professor ON professor.idProfessor = disciplina.idProfessor"
                 + " WHERE aluno.idUsuario = ?";
 
         try {
@@ -55,22 +63,33 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
                 Usuario dadoUsuario = new Usuario();
 
                 dadoUsuario.setDataNascimento(resultado.getString("DataNascimento"));
-
                 dadoUsuario.setLogin(resultado.getString("Login"));
-
                 dadoUsuario.setEmail(resultado.getString("Email"));
-
                 dadoUsuario.setIdUser(resultado.getInt("idUsuario"));
-
                 dadoUsuario.setMatricula(resultado.getString("Matricula"));
-
                 dadoUsuario.setSenha(resultado.getString("Senha"));
-
                 dadoUsuario.setTipo(resultado.getInt("TipoUsuario"));
-                
                 dadoUsuario.setTelefone(resultado.getString("Telefone"));
-
                 dadoUsuario.setNome(resultado.getString("Nome"));
+                
+                
+                
+                
+                
+                Set<Disciplina> listDisciplinas = null;
+                listDisciplinas = new HashSet<Disciplina>();
+                
+                
+                
+                
+                while(resultado.next()){
+                    
+                    Disciplina disc = new Disciplina();
+                    disc.setIdDisciplina(resultado.getInt("idDisciplina"));
+                    disc.setNome(resultado.getString("Nome"));
+                    listDisciplinas.add(disc);
+                }
+                
 
                 alunoProcurado.setEndereco(dadosEndereco);
                 alunoProcurado.setUsuario(dadoUsuario);
