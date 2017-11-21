@@ -8,13 +8,17 @@ package dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.logging.Level;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javax.swing.JOptionPane;
 import modelo.Aluno;
+import modelo.AlunoHasDisciplina;
 import modelo.Disciplina;
 import modelo.Endereco;
 import modelo.Usuario;
@@ -105,5 +109,62 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
 
         return alunoProcurado;
     }
+    
+     public static List<Aluno> listarAlunos() {
+
+        Aluno alunoProcurado = null;
+        String consulta = "SELECT * FROM usuario";
+        List<Aluno> alunos = new ArrayList();
+        {
+            PreparedStatement stmt;
+            try {
+                stmt = conn.prepareStatement(consulta); 
+
+                ResultSet resultado = stmt.executeQuery();
+                while (resultado.next()) {
+                    alunoProcurado = new Aluno();
+                    alunoProcurado.setIdAluno(resultado.getInt("idUsuario"));
+                    alunoProcurado.setMatricula(resultado.getString("Matricula"));
+
+                    alunos.add(alunoProcurado);
+
+                }
+            } catch (SQLException ex) {
+                System.out.println("Erro ao Listar alunos" + ex);
+            }
+
+        }
+        
+        return alunos;
+    }
+     
+     
+//     public static List<AlunoHasDisciplina> listarDisciplina(Aluno aluno) {
+//
+//        Disciplina disc;
+//        String consulta = "SELECT * FROM aluno_has_disciplina WHERE idALuno = ?";
+//        List<Disciplina> disciplinas = new ArrayList();
+//        {
+//            PreparedStatement stmt;
+//            try {
+//             stmt = conn.prepareStatement(consulta);
+//             stmt.setInt(1, aluno.getIdAluno());
+//             ResultSet resultado = stmt.executeQuery();
+//                while (resultado.next()) {
+//                    disc = new Disciplina();
+//                    disc.setIdDisciplina(resultado.("idDisciplina"));
+//                    disc.set(resultado.getString("Matricula"));
+//
+//                    disciplinas.add(disc);
+//
+//                }
+//            } catch (SQLException ex) {
+//                System.out.println("Erro ao Listar alunos" + ex);
+//            }
+//
+//        }
+//        
+//        return alunos;
+//    }
 
 }

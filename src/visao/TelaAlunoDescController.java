@@ -8,8 +8,10 @@ package visao;
 import dao.AlunoDAO;
 import dao.AlunoDAOJDBC;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
+import javafx.beans.property.Property;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -19,8 +21,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import modelo.Aluno;
+import modelo.Disciplina;
 import static visao.TelaLoginController.usuario;
 
 
@@ -30,9 +34,6 @@ import static visao.TelaLoginController.usuario;
  * @author Leandro
  */
 public class TelaAlunoDescController implements Initializable {
-
-    
-    
     
     @FXML
     private AnchorPane Tela_Disci;
@@ -59,8 +60,26 @@ public class TelaAlunoDescController implements Initializable {
     @FXML
     private Button btn_disciplina;
     
-    //private AlunoDAOJDBC alunojdbc;
-   
+    private AlunoDAOJDBC alunojdbc;
+    @FXML
+    private Label lbTeste1;
+    @FXML
+    private Label lbTeste11;
+    @FXML
+    private TableColumn<?, ?> cl_disciplinaAluno;
+    @FXML
+    private TableColumn<?, ?> cl_prova1Aluno;
+    @FXML
+    private TableColumn<?, ?> cl_prova2Aluno;
+    @FXML
+    private TableColumn<?, ?> cl_mpAluno;
+    @FXML
+    private TableColumn<?, ?> cl_pfAluno;
+    @FXML
+    private TableColumn<?, ?> cl_mediaFinalAluno;
+    @FXML
+    private Label lb;
+  
     
     /**
      * Initializes the controller class.
@@ -70,6 +89,7 @@ public class TelaAlunoDescController implements Initializable {
        
     
     @Override
+    @SuppressWarnings("empty-statement")
     public void initialize(URL url, ResourceBundle rb) {
         
         Aluno aluno;
@@ -84,6 +104,9 @@ public class TelaAlunoDescController implements Initializable {
         lb_data.setText(aluno.usuario.getDataNascimento());
         lb_email.setText(aluno.usuario.getEmail());
         lb_tel.setText(aluno.usuario.getTelefone());
+        
+        
+       
      
         
         btn_dados.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -99,8 +122,11 @@ public class TelaAlunoDescController implements Initializable {
         btn_disciplina.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
-                
+               
                 Tela_Disci.toFront();
+                
+                
+               
             }
             
             
