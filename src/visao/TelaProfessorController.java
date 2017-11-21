@@ -5,9 +5,22 @@
  */
 package visao;
 
+import dao.ProfessorDAOJDBC;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.layout.AnchorPane;
+import javax.swing.Action;
+import modelo.Professor;
+import modelo.Usuario;
+import static visao.TelaLoginController.usuario;
 
 /**
  * FXML Controller class
@@ -16,12 +29,110 @@ import javafx.fxml.Initializable;
  */
 public class TelaProfessorController implements Initializable {
 
+    @FXML
+    private AnchorPane Tela_DisciplinaProf;
+    @FXML
+    private Label lb_tel1;
+    @FXML
+    private Label lbTeste11;
+    @FXML
+    private ChoiceBox<?> cb_turma;
+    @FXML
+    private TableColumn<?, ?> cl_disciplinaProf;
+    @FXML
+    private TableColumn<?, ?> cl_prova1Prof;
+    @FXML
+    private TableColumn<?, ?> cl_prova2Prof;
+    @FXML
+    private TableColumn<?, ?> cl_mpProf;
+    @FXML
+    private TableColumn<?, ?> cl_pfProf;
+    @FXML
+    private TableColumn<?, ?> cl_mediaFinalProf;
+    @FXML
+    private Label lb;
+    @FXML
+    private AnchorPane Tela_QuestoesProf;
+    @FXML
+    private Label lb_tel11;
+    @FXML
+    private Label lbTeste111;
+    @FXML
+    private AnchorPane Tela_DadosProf;
+    @FXML
+    private Label lb_tel;
+    @FXML
+    private Label lbTeste1;
+    @FXML
+    private Label lb_nomeProf;
+    @FXML
+    private Label lb_formacaoProf;
+    @FXML
+    private Label lb_tituloProf;
+    @FXML
+    private Label lb_matriculaProf;
+    @FXML
+    private Label lb_dataProf;
+    @FXML
+    private Label lb_emailProf;
+    @FXML
+    private Label lb_telefoneProf;
+    @FXML
+    private Button btn_dadosProf;
+    @FXML
+    private Button btn_disciplinaProf;
+    @FXML
+    private Button btn_QuestaoProf;
+
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+        Professor professor;
+        ProfessorDAOJDBC professorjdbc;
+        professorjdbc = new ProfessorDAOJDBC();
+        professor = professorjdbc.buscarProfessor(usuario);
+        
+        lb_nomeProf.setText(professor.usuario.getNome());
+        lb_formacaoProf.setText(professor.getFormacao());
+        lb_tituloProf.setText(professor.getTitulo());
+        lb_matriculaProf.setText(professor.usuario.getMatricula());
+        lb_dataProf.setText(professor.usuario.getDataNascimento());
+        lb_emailProf.setText(professor.usuario.getEmail());
+        lb_telefoneProf.setText(professor.usuario.getTelefone());
+        
+        
+        btn_dadosProf.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                
+                Tela_DadosProf.toFront();
+            }
+          });
+        
+        btn_disciplinaProf.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                Tela_DisciplinaProf.toFront();
+            }
+    
+        });
+        
+        btn_QuestaoProf.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                
+                Tela_QuestoesProf.toFront();
+            }
+            
+            
+        });
+        
+        
     }    
     
 }

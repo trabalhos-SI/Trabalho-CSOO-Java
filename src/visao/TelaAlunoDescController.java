@@ -59,7 +59,7 @@ public class TelaAlunoDescController implements Initializable {
     @FXML
     private Button btn_disciplina;
     
-    private AlunoDAOJDBC alunojdbc;
+    //private AlunoDAOJDBC alunojdbc;
    
     
     /**
@@ -71,8 +71,9 @@ public class TelaAlunoDescController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        
         Aluno aluno;
+        AlunoDAOJDBC alunojdbc;
         alunojdbc = new AlunoDAOJDBC();       
         aluno = alunojdbc.buscarAluno(usuario);
 

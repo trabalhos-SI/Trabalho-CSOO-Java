@@ -28,7 +28,7 @@ public class ProfessorDAOJDBC extends DAOBaseJDBC implements ProfessorDAO {
                 + " FROM usuario INNER JOIN professor"
                 + " ON usuario.idUsuario = professor.idUsuario"
                 + " INNER JOIN endereco ON endereco.idEndereco = professor.idEndereco"
-                + " WHERE aluno.idUsuario = ?";
+                + " WHERE professor.idUsuario = ?";
         
         try{
             
@@ -38,7 +38,7 @@ public class ProfessorDAOJDBC extends DAOBaseJDBC implements ProfessorDAO {
             
             if(resultado.next()){
                 professorProcuraro = new Professor();
-                professorProcuraro.setIdProfessor(resultado.getInt("idProfesso"));
+                professorProcuraro.setIdProfessor(resultado.getInt("idProfessor"));
                 professorProcuraro.setTitulo(resultado.getString("Titulo"));
                 professorProcuraro.setFormacao(resultado.getString("Formacao"));
                 
