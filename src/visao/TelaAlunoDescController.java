@@ -5,6 +5,7 @@
  */
 package visao;
 
+import com.mysql.fabric.xmlrpc.base.Value;
 import dao.AlunoDAO;
 import dao.AlunoDAOJDBC;
 import java.net.URL;
@@ -12,6 +13,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
 import javafx.beans.property.Property;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -21,10 +24,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.MapValueFactory;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import modelo.Aluno;
+import modelo.AlunoHasDisciplina;
 import modelo.Disciplina;
+import org.omg.CORBA.portable.ValueFactory;
 import static visao.TelaLoginController.usuario;
 
 
@@ -59,26 +65,27 @@ public class TelaAlunoDescController implements Initializable {
     private Button btn_dados;
     @FXML
     private Button btn_disciplina;
-    
-    private AlunoDAOJDBC alunojdbc;
+   
     @FXML
     private Label lbTeste1;
     @FXML
     private Label lbTeste11;
     @FXML
-    private TableColumn<?, ?> cl_disciplinaAluno;
+    private TableColumn<Disciplina, String> cl_disciplinaAluno;
     @FXML
-    private TableColumn<?, ?> cl_prova1Aluno;
+    private TableColumn<Disciplina, Double> cl_prova1Aluno;
     @FXML
     private TableColumn<?, ?> cl_prova2Aluno;
     @FXML
-    private TableColumn<?, ?> cl_mpAluno;
+    private TableColumn<Disciplina, Double> cl_mpAluno;
     @FXML
     private TableColumn<?, ?> cl_pfAluno;
     @FXML
-    private TableColumn<?, ?> cl_mediaFinalAluno;
+    private TableColumn<Disciplina, Double> cl_mediaFinalAluno;
     @FXML
     private Label lb;
+    @FXML
+    private TableView<AlunoHasDisciplina> table;
   
     
     /**
@@ -105,9 +112,14 @@ public class TelaAlunoDescController implements Initializable {
         lb_email.setText(aluno.usuario.getEmail());
         lb_tel.setText(aluno.usuario.getTelefone());
         
+          
         
-       
-     
+        
+        cl_mediaFinalAluno.setCellValueFactory(new PropertyValueFactory("mediaFinal"));
+        cl_mpAluno.setCellValueFactory(new PropertyValueFactory("mediaParcial"));
+        cl_disciplinaAluno.setCellValueFactory(new PropertyValueFactory("nome"));
+        table.setItems(FXCollections.observableArrayList(alunojdbc.listarDisciplina(aluno)));
+        
         
         btn_dados.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
@@ -124,15 +136,12 @@ public class TelaAlunoDescController implements Initializable {
             public void handle(ActionEvent event) {
                
                 Tela_Disci.toFront();
-                
-                
-               
+   
             }
-            
-            
-            
+
         });
              
        }//FIM DO INITIALIZE
+
     
 }

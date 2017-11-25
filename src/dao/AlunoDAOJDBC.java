@@ -16,11 +16,14 @@ import java.util.logging.Level;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javax.swing.JOptionPane;
 import modelo.Aluno;
 import modelo.AlunoHasDisciplina;
 import modelo.Disciplina;
 import modelo.Endereco;
+import modelo.Professor;
 import modelo.Usuario;
 import tools.DAOBaseJDBC;
 
@@ -110,7 +113,8 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
         return alunoProcurado;
     }
     
-     public static List<Aluno> listarAlunos() {
+     @Override
+     public List<Aluno> listarAlunos() {
 
         Aluno alunoProcurado = null;
         String consulta = "SELECT * FROM usuario";
@@ -138,33 +142,55 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
         return alunos;
     }
      
-     
-//     public static List<AlunoHasDisciplina> listarDisciplina(Aluno aluno) {
-//
-//        Disciplina disc;
-//        String consulta = "SELECT * FROM aluno_has_disciplina WHERE idALuno = ?";
-//        List<Disciplina> disciplinas = new ArrayList();
-//        {
-//            PreparedStatement stmt;
-//            try {
-//             stmt = conn.prepareStatement(consulta);
-//             stmt.setInt(1, aluno.getIdAluno());
-//             ResultSet resultado = stmt.executeQuery();
-//                while (resultado.next()) {
-//                    disc = new Disciplina();
-//                    disc.setIdDisciplina(resultado.("idDisciplina"));
-//                    disc.set(resultado.getString("Matricula"));
-//
-//                    disciplinas.add(disc);
-//
-//                }
-//            } catch (SQLException ex) {
-//                System.out.println("Erro ao Listar alunos" + ex);
-//            }
-//
-//        }
-//        
-//        return alunos;
-//    }
+    @Override
+    public ObservableList<AlunoHasDisciplina> listarDisciplina(Aluno aluno) {
+
+        String consulta = "SELECT a.MediaFinal, a.MedialParcial, a.idDisciplina, d.Nome as NomeDisciplina,"
+                + " u.Nome as NomeProfessor, p.idProfessor, d.idDisciplina "
+                + " FROM aluno_has_disciplina a inner join"
+                + " disciplina d on a.idDisciplina = d.idDisciplina"
+                + " inner join professor p on d.idProfessor = p.idProfessor"
+                + " inner join usuario u on p.idUsuario = u.idUsuario"
+                + " WHERE idAluno = ?";
+        ObservableList<AlunoHasDisciplina> materias = FXCollections.observableArrayList();
+        
+            try {
+                PreparedStatement stmt;
+                stmt = conn.prepareStatement(consulta);
+                stmt.setInt(1, aluno.getIdAluno());
+                ResultSet resultado = stmt.executeQuery();
+                while (resultado.next()) {
+                    AlunoHasDisciplina materia = new AlunoHasDisciplina();
+                    materia.setAluno(aluno);
+                    materia.setMediaFinal(resultado.getDouble("MediaFinal"));
+                    materia.setMediaParcial(resultado.getDouble("MedialParcial"));
+                    
+                    
+                    
+                    Disciplina disciplina = new Disciplina();
+                    disciplina.setIdDisciplina(resultado.getInt("idDisciplina"));
+                    disciplina.setNome(resultado.getString("NomeDisciplina"));
+                    
+                    Usuario usuario = new Usuario();
+                    usuario.setNome(resultado.getString("NomeProfessor"));
+                    
+                    Professor professor = new Professor();
+                    professor.setIdUser(resultado.getInt("idProfessor"));
+                    professor.setUsuario(usuario);
+                    
+                    disciplina.setProfessor(professor);
+                    
+                    materia.setDisciplina(disciplina);
+                    
+                    materias.add(materia);
+                }
+            } catch (SQLException ex) {
+                System.out.println("Erro ao Listar alunos" + ex);
+            }
+
+        
+        
+        return materias;
+    }
 
 }

@@ -11,34 +11,36 @@ package modelo;
  */
 public class AlunoHasDisciplina {
     
-    private int idDidciplina;
-    private int idAluno;
+    private Disciplina Disciplina;
+    private Aluno Aluno;
     private Double mediaParcial;
     private Double mediaFinal;
 
     public AlunoHasDisciplina() {
     }
 
-    public AlunoHasDisciplina(int idDidciplina, int idAluno) {
-        this.idDidciplina = idDidciplina;
-        this.idAluno = idAluno;
+    public AlunoHasDisciplina(Aluno Aluno) {
+        this.Aluno = Aluno;
+    }
+    
+
+    public Disciplina getDisciplina() {
+        return Disciplina;
     }
 
-    public int getIdDidciplina() {
-        return idDidciplina;
+    public void setDisciplina(Disciplina Disciplina) {
+        this.Disciplina = Disciplina;
     }
 
-    public void setIdDidciplina(int idDidciplina) {
-        this.idDidciplina = idDidciplina;
+    public Aluno getAluno() {
+        return Aluno;
     }
 
-    public int getIdAluno() {
-        return idAluno;
+    public void setAluno(Aluno Aluno) {
+        this.Aluno = Aluno;
     }
 
-    public void setIdAluno(int idAluno) {
-        this.idAluno = idAluno;
-    }
+    
 
     public Double getMediaParcial() {
         return mediaParcial;
@@ -55,7 +57,7 @@ public class AlunoHasDisciplina {
     public void setMediaFinal(Double mediaFinal) {
         this.mediaFinal = mediaFinal;
     }
-    
+
     
     
 }

@@ -29,7 +29,10 @@ public class Usuario {
         this.telefone = telefone;
     }
 
-    
+    @Override
+    public String toString() {
+        return "Usuario{" + "idUser=" + idUser + ", tipo=" + tipo + ", nome=" + nome + ", email=" + email + ", matricula=" + matricula + ", dataNascimento=" + dataNascimento + ", login=" + login + ", senha=" + senha + ", telefone=" + telefone + '}';
+    }
     
     public Usuario() {
     }
@@ -103,7 +106,6 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
-    
+       
     
 }

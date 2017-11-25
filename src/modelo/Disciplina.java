@@ -14,21 +14,6 @@ public class Disciplina {
     private int idDisciplina;
     private String nome;
     private Professor professor;
-    private AlunoHasDisciplina alunoXdisciplina;
-
-    public Disciplina(AlunoHasDisciplina alunoXdisciplina) {
-        this.alunoXdisciplina = alunoXdisciplina;
-    }
-
-    public AlunoHasDisciplina getAlunoXdisciplina() {
-        return alunoXdisciplina;
-    }
-
-    public void setAlunoXdisciplina(AlunoHasDisciplina alunoXdisciplina) {
-        this.alunoXdisciplina = alunoXdisciplina;
-    }
-    
-    
 
     public Disciplina() {
     }

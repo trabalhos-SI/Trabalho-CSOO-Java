@@ -5,6 +5,8 @@
  */
 package modelo;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -18,19 +20,27 @@ public class Aluno extends Usuario {
     private String turma;
     private Endereco endereco;
     public Usuario usuario;
-    private Set<Disciplina> disciplina;
+    private List<AlunoHasDisciplina> Materias;
 
-    public Set<Disciplina> getDisciplina() {
-        return disciplina;
+    public Aluno(){
+        this.Materias = new ArrayList<>();
     }
 
-    public void setDisciplina(Set<Disciplina> disciplina) {
-        this.disciplina = disciplina;
+    @Override
+    public String toString() {
+        return "Aluno{" + "idAluno=" + idAluno + ", Curso=" + Curso + ", turma=" + turma + ", endereco=" + endereco + ", usuario=" + usuario.toString() + '}';
+    }
+    
+    
+    
+    public List<AlunoHasDisciplina> getMaterias() {
+        return Materias;
     }
 
-    
-    
-    
+    public void setMaterias(List<AlunoHasDisciplina> Materias) {
+        this.Materias = Materias;
+    }
+
     public String getTurma() {
         return turma;
     }
@@ -38,9 +48,6 @@ public class Aluno extends Usuario {
     public void setTurma(String turma) {
         this.turma = turma;
     }
-
-    
-    
     
     public Usuario getUsuario() {
         return usuario;
@@ -52,11 +59,6 @@ public class Aluno extends Usuario {
 
     public Aluno(int idAluno) {
         this.idAluno = idAluno;
-    }
-
-    public Aluno() {
-        this.endereco = new Endereco();
-        this.usuario = new Usuario();
     }
 
     public int getIdAluno() {
@@ -81,11 +83,6 @@ public class Aluno extends Usuario {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
-    }
-
-    
-    
-    
-    
+    }    
     
 }

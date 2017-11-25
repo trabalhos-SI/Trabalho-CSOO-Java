@@ -5,7 +5,11 @@
  */
 package dao;
 
+import java.util.List;
+import javafx.collections.ObservableList;
 import modelo.Aluno;
+import modelo.AlunoHasDisciplina;
+import modelo.Disciplina;
 import modelo.Usuario;
 
 /**
@@ -22,6 +26,6 @@ public interface AlunoDAO {
      * @return - Retornara um aluno pelo seu usuario e senha.
      */
     public Aluno buscarAluno(Usuario usuario);
-    
-    
+    public ObservableList<AlunoHasDisciplina> listarDisciplina(Aluno aluno);
+    public List<Aluno> listarAlunos();
 }
