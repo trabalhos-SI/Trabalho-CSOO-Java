@@ -101,46 +101,46 @@ public class AlunoHasDisciplina {
     public void setProvaFinal(Prova ProvaFinal) {
         this.ProvaFinal = ProvaFinal;
     }
-    
-    public Double getNotaProva1(){
-        return this.Prova1.getNota();
-    }
-    
-    public Double getNotaProva2(){
-        return this.Prova2.getNota();
-    }
-    
-    public Double getNotaProvaFinal(){
-        return this.ProvaFinal.getNota();
-    }
-
-    public Prova getProvaFinal() {
-        return ProvaFinal;
-    }
-
-    public void setProvaFinal(Prova ProvaFinal) {
-        this.ProvaFinal = ProvaFinal;
-    }
-    
-    public Double getNotaProva1(){
-        return this.Prova1.getNota();
-    }
-    
-    public Double getNotaProva2(){
-        return this.Prova2.getNota();
-    }
-    
-    public Double getNotaProvaFinal(){
-        return this.ProvaFinal.getNota();
-    }
-
-    public Prova getProvaFinal() {
-        return ProvaFinal;
-    }
-
-    public void setProvaFinal(Prova ProvaFinal) {
-        this.ProvaFinal = ProvaFinal;
-
-    
-}
+//    
+//    public Double getNotaProva1(){
+//        return this.Prova1.getNota();
+//    }
+//    
+//    public Double getNotaProva2(){
+//        return this.Prova2.getNota();
+//    }
+//    
+//    public Double getNotaProvaFinal(){
+//        return this.ProvaFinal.getNota();
+//    }
+//
+//    public Prova getProvaFinal() {
+//        return ProvaFinal;
+//    }
+//
+//    public void setProvaFinal(Prova ProvaFinal) {
+//        this.ProvaFinal = ProvaFinal;
+//    }
+//    
+//    public Double getNotaProva1(){
+//        return this.Prova1.getNota();
+//    }
+//    
+//    public Double getNotaProva2(){
+//        return this.Prova2.getNota();
+//    }
+//    
+//    public Double getNotaProvaFinal(){
+//        return this.ProvaFinal.getNota();
+//    }
+//
+//    public Prova getProvaFinal() {
+//        return ProvaFinal;
+//    }
+//
+//    public void setProvaFinal(Prova ProvaFinal) {
+//        this.ProvaFinal = ProvaFinal;
+//
+//    
+//}
 }
