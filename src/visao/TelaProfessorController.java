@@ -5,22 +5,34 @@
  */
 package visao;
 
+import dao.AlunoDAOJDBC;
 import dao.ProfessorDAOJDBC;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javax.swing.Action;
+import modelo.Aluno;
+import modelo.Disciplina;
 import modelo.Professor;
 import modelo.Usuario;
 import static visao.TelaLoginController.usuario;
+
 
 /**
  * FXML Controller class
@@ -36,7 +48,7 @@ public class TelaProfessorController implements Initializable {
     @FXML
     private Label lbTeste11;
     @FXML
-    private ChoiceBox<?> cb_turma;
+    private ChoiceBox<String> cb_turma;
     @FXML
     private TableColumn<?, ?> cl_disciplinaProf;
     @FXML
@@ -83,7 +95,13 @@ public class TelaProfessorController implements Initializable {
     private Button btn_disciplinaProf;
     @FXML
     private Button btn_QuestaoProf;
+    @FXML
+    private Button btn_listar;
 
+    private final List<Disciplina> listDisciplina = new ArrayList<>();
+    @FXML
+    private ComboBox<String> cb_teste;
+    
     /**
      * Initializes the controller class.
      * @param url
@@ -106,6 +124,14 @@ public class TelaProfessorController implements Initializable {
         lb_telefoneProf.setText(professor.usuario.getTelefone());
         
         
+        // USANDO O CHOICEBOX
+        
+        cb_teste.setTooltip(new Tooltip("Selecione a disciplina"));
+        cb_teste.setValue( "" );
+        cb_teste.setItems(FXCollections.observableArrayList(professorjdbc.listarDisciplinas(professor)));
+
+        
+        
         btn_dadosProf.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
@@ -117,7 +143,9 @@ public class TelaProfessorController implements Initializable {
         btn_disciplinaProf.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
+               
                 Tela_DisciplinaProf.toFront();
+                
             }
     
         });
@@ -133,6 +161,15 @@ public class TelaProfessorController implements Initializable {
         });
         
         
-    }    
+    }
+
+    @FXML
+    public void selecionarItems(){
+        
+        String nome = cb_teste.getSelectionModel().getSelectedItem();
+        System.out.println("Nome: " + nome);
+
+        
+    }
     
 }

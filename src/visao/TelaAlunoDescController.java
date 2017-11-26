@@ -117,7 +117,7 @@ public class TelaAlunoDescController implements Initializable {
         
         cl_mediaFinalAluno.setCellValueFactory(new PropertyValueFactory("mediaFinal"));
         cl_mpAluno.setCellValueFactory(new PropertyValueFactory("mediaParcial"));
-        cl_disciplinaAluno.setCellValueFactory(new PropertyValueFactory("nome"));
+        cl_disciplinaAluno.setCellValueFactory(new PropertyValueFactory("DisciplinaNome"));
         table.setItems(FXCollections.observableArrayList(alunojdbc.listarDisciplina(aluno)));
         
         
@@ -143,5 +143,6 @@ public class TelaAlunoDescController implements Initializable {
              
        }//FIM DO INITIALIZE
 
+    
     
 }

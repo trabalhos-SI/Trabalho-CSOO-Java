@@ -5,7 +5,11 @@
  */
 package dao;
 
+import java.util.List;
+import javafx.collections.ObservableList;
 import modelo.Aluno;
+import modelo.AlunoHasDisciplina;
+import modelo.Disciplina;
 import modelo.Professor;
 import modelo.Usuario;
 
@@ -16,4 +20,5 @@ import modelo.Usuario;
 public interface ProfessorDAO {
     
     public Professor buscarProfessor(Usuario usuario);
+    public List<String> listarDisciplinas(Professor professor);
 }

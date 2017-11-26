@@ -167,6 +167,7 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
                     
                     
                     
+                    
                     Disciplina disciplina = new Disciplina();
                     disciplina.setIdDisciplina(resultado.getInt("idDisciplina"));
                     disciplina.setNome(resultado.getString("NomeDisciplina"));
@@ -192,5 +193,7 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
         
         return materias;
     }
+    
+    
 
 }

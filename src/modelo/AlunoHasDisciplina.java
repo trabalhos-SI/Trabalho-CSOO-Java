@@ -57,7 +57,10 @@ public class AlunoHasDisciplina {
     public void setMediaFinal(Double mediaFinal) {
         this.mediaFinal = mediaFinal;
     }
-
+    
+     public String getDisciplinaNome(){
+        return this.Disciplina.getNome();
+    }
     
     
 }
