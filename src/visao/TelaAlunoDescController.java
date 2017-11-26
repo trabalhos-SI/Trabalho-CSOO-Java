@@ -30,6 +30,7 @@ import javafx.scene.layout.AnchorPane;
 import modelo.Aluno;
 import modelo.AlunoHasDisciplina;
 import modelo.Disciplina;
+import modelo.Prova;
 import org.omg.CORBA.portable.ValueFactory;
 import static visao.TelaLoginController.usuario;
 
@@ -71,17 +72,17 @@ public class TelaAlunoDescController implements Initializable {
     @FXML
     private Label lbTeste11;
     @FXML
-    private TableColumn<Disciplina, String> cl_disciplinaAluno;
+    private TableColumn<AlunoHasDisciplina, String> cl_disciplinaAluno;
     @FXML
-    private TableColumn<Disciplina, Double> cl_prova1Aluno;
+    private TableColumn<AlunoHasDisciplina, Double> cl_prova1Aluno;
     @FXML
-    private TableColumn<?, ?> cl_prova2Aluno;
+    private TableColumn<AlunoHasDisciplina, Double> cl_prova2Aluno;
     @FXML
     private TableColumn<Disciplina, Double> cl_mpAluno;
     @FXML
     private TableColumn<?, ?> cl_pfAluno;
     @FXML
-    private TableColumn<Disciplina, Double> cl_mediaFinalAluno;
+    private TableColumn<AlunoHasDisciplina, Double> cl_mediaFinalAluno;
     @FXML
     private Label lb;
     @FXML
@@ -103,7 +104,7 @@ public class TelaAlunoDescController implements Initializable {
         AlunoDAOJDBC alunojdbc;
         alunojdbc = new AlunoDAOJDBC();       
         aluno = alunojdbc.buscarAluno(usuario);
-
+        
         lb_curso.setText(aluno.getCurso());
         lb_nome.setText(aluno.usuario.getNome());
         lb_turma.setText(aluno.getTurma());
@@ -114,10 +115,12 @@ public class TelaAlunoDescController implements Initializable {
         
           
         
-        
         cl_mediaFinalAluno.setCellValueFactory(new PropertyValueFactory("mediaFinal"));
         cl_mpAluno.setCellValueFactory(new PropertyValueFactory("mediaParcial"));
         cl_disciplinaAluno.setCellValueFactory(new PropertyValueFactory("DisciplinaNome"));
+        cl_prova1Aluno.setCellValueFactory(new PropertyValueFactory("NotaProva1"));
+        cl_prova2Aluno.setCellValueFactory(new PropertyValueFactory("NotaProva2"));
+        cl_pfAluno.setCellValueFactory(new PropertyValueFactory("NotaProvaFinal"));
         table.setItems(FXCollections.observableArrayList(alunojdbc.listarDisciplina(aluno)));
         
         

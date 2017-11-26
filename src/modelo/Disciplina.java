@@ -12,7 +12,7 @@ package modelo;
 public class Disciplina {
     
     private int idDisciplina;
-    private String nome;
+    public String nome;
     private Professor professor;
 
     public Disciplina() {

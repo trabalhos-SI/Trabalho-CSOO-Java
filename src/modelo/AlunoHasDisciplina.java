@@ -15,7 +15,11 @@ public class AlunoHasDisciplina {
     private Aluno Aluno;
     private Double mediaParcial;
     private Double mediaFinal;
-
+    private Prova Prova1;
+    private Prova Prova2;
+    private Prova ProvaFinal;
+    
+    
     public AlunoHasDisciplina() {
     }
 
@@ -57,10 +61,46 @@ public class AlunoHasDisciplina {
     public void setMediaFinal(Double mediaFinal) {
         this.mediaFinal = mediaFinal;
     }
-    
+
      public String getDisciplinaNome(){
         return this.Disciplina.getNome();
+     }
+  
+    public Prova getProva1() {
+        return Prova1;
+    }
+
+    public void setProva1(Prova Prova1) {
+        this.Prova1 = Prova1;
+    }
+
+    public Prova getProva2() {
+        return Prova2;
+    }
+
+    public void setProva2(Prova Prova2) {
+        this.Prova2 = Prova2;
     }
     
+    public Double getNotaProva1(){
+        return this.Prova1.getNota();
+    }
     
+    public Double getNotaProva2(){
+        return this.Prova2.getNota();
+    }
+    
+    public Double getNotaProvaFinal(){
+        return this.ProvaFinal.getNota();
+    }
+
+    public Prova getProvaFinal() {
+        return ProvaFinal;
+    }
+
+    public void setProvaFinal(Prova ProvaFinal) {
+        this.ProvaFinal = ProvaFinal;
+
+    
+}
 }
