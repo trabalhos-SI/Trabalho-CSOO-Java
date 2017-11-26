@@ -62,10 +62,10 @@ public class AlunoHasDisciplina {
         this.mediaFinal = mediaFinal;
     }
 
-     public String getDisciplinaNome(){
+    public String getDisciplinaNome(){
         return this.Disciplina.getNome();
-     }
-  
+    }
+
     public Prova getProva1() {
         return Prova1;
     }
@@ -80,6 +80,26 @@ public class AlunoHasDisciplina {
 
     public void setProva2(Prova Prova2) {
         this.Prova2 = Prova2;
+    }
+    
+    public Double getNotaProva1(){
+        return this.Prova1.getNota();
+    }
+    
+    public Double getNotaProva2(){
+        return this.Prova2.getNota();
+    }
+    
+    public Double getNotaProvaFinal(){
+        return this.ProvaFinal.getNota();
+    }
+
+    public Prova getProvaFinal() {
+        return ProvaFinal;
+    }
+
+    public void setProvaFinal(Prova ProvaFinal) {
+        this.ProvaFinal = ProvaFinal;
     }
     
     public Double getNotaProva1(){
