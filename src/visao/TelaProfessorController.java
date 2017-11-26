@@ -51,7 +51,7 @@ public class TelaProfessorController implements Initializable {
     @FXML
     private Label lbTeste11;
     @FXML
-    private TableColumn<?, ?> cl_disciplinaProf;
+    private TableColumn<AlunoHasDisciplina, String> cl_disciplinaProf;
     @FXML
     private TableColumn<?, ?> cl_prova1Prof;
     @FXML
@@ -176,12 +176,13 @@ public class TelaProfessorController implements Initializable {
         ProfessorDAOJDBC professorjdbc;
         professorjdbc = new ProfessorDAOJDBC();
         professor = professorjdbc.buscarProfessor(usuario);
+        AlunoHasDisciplina teste = new AlunoHasDisciplina();
         
         String nome = cb_teste.getSelectionModel().getSelectedItem();
         
         cl_mediaFinalProf.setCellValueFactory(new PropertyValueFactory("mediaFinal"));
         cl_mpProf.setCellValueFactory(new PropertyValueFactory("mediaParcial"));
-        cl_disciplinaProf.setCellValueFactory(new PropertyValueFactory("Nome"));
+        cl_disciplinaProf.setCellValueFactory(new PropertyValueFactory("AlunoNome"));
         tb_prof.setItems(FXCollections.observableArrayList(professorjdbc.listarDisciplinaAluno(aluno, nome)));
 
         

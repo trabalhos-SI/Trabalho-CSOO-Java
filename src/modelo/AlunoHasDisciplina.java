@@ -66,7 +66,7 @@ public class AlunoHasDisciplina {
         return this.Disciplina.getNome();
     }
     public String getAlunoNome(){
-        return this.Aluno.getNome();
+        return this.Aluno.usuario.getNome();
     }
 
     public Prova getProva1() {

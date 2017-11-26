@@ -91,13 +91,17 @@ public class ProfessorDAOJDBC extends DAOBaseJDBC implements ProfessorDAO {
     @Override
     public List<String> listarDisciplinas(Professor professor){
         
-        String consulta = "SELECT d.Nome as NomeDisciplina,"
-                + " u.Nome as NomeProfessor, p.idProfessor, d.idDisciplina "
-                + " FROM aluno_has_disciplina a inner join"
-                + " disciplina d on a.idDisciplina = d.idDisciplina"
-                + " inner join professor p on d.idProfessor = p.idProfessor"
-                + " inner join usuario u on p.idUsuario = u.idUsuario"
-                + " WHERE p.idProfessor = ?";
+//        String consulta = "SELECT d.Nome as NomeDisciplina,"
+//                + " u.Nome as NomeProfessor, p.idProfessor, d.idDisciplina "
+//                + " FROM aluno_has_disciplina a inner join"
+//                + " disciplina d on a.idDisciplina = d.idDisciplina"
+//                + " inner join professor p on d.idProfessor = p.idProfessor"
+//                + " inner join usuario u on p.idUsuario = u.idUsuario"
+//                + " WHERE p.idProfessor = ?";
+
+          String consulta = "SELECT d.Nome as NomeDIsciplina FROM disciplina d INNER JOIN professor p"
+                  + " ON d.idProfessor = p.idProfessor WHERE p.idProfessor = ?";
+            
            List<String> materias = new ArrayList<>();
         
             try {
@@ -126,13 +130,21 @@ public class ProfessorDAOJDBC extends DAOBaseJDBC implements ProfessorDAO {
     public ObservableList<AlunoHasDisciplina> listarDisciplinaAluno(Aluno aluno, String nome){
         
         ProvaDAOJDBC provajdbc = new ProvaDAOJDBC();
-        String consulta = "SELECT a.MediaFinal, a.MedialParcial, a.idDisciplina, d.Nome as NomeDisciplina,"
-                + " u.Nome as NomeProfessor, p.idProfessor, d.idDisciplina, u.Nome "
-                + " FROM aluno_has_disciplina a inner join"
-                + " disciplina d on a.idDisciplina = d.idDisciplina"
-                + " inner join professor p on d.idProfessor = p.idProfessor"
-                + " inner join usuario u on p.idUsuario = u.idUsuario"
-                + " WHERE d.nome = ?";
+//        String consulta = "SELECT a.MediaFinal, a.MedialParcial, a.idDisciplina, d.Nome as NomeDisciplina,"
+//                + " u.Nome as NomeProfessor, p.idProfessor, d.idDisciplina, u.Nome "
+//                + " FROM aluno_has_disciplina a inner join"
+//                + " disciplina d on a.idDisciplina = d.idDisciplina"
+//                + " inner join professor p on d.idProfessor = p.idProfessor"
+//                + " inner join usuario u on p.idUsuario = u.idUsuario"
+//                + " WHERE d.Nome = ?";
+
+        String consulta = "SELECT u.idUsuario, u.Nome, a.idAluno, ad.MedialParcial, ad.MediaFinal,"
+                + " d.idDisciplina, a.idAluno, d.Nome FROM disciplina d INNER JOIN aluno_has_disciplina ad"
+                + " ON d.idDisciplina = ad.idDisciplina INNER JOIN aluno a"
+                + " ON ad.idAluno = a.idAluno INNER JOIN usuario u"
+                + " ON a.idUsuario = u.idUsuario WHERE d.nome = ?";
+
+
         ObservableList<AlunoHasDisciplina> materias = FXCollections.observableArrayList();
             
             try {
@@ -145,19 +157,24 @@ public class ProfessorDAOJDBC extends DAOBaseJDBC implements ProfessorDAO {
                     materia.setAluno(aluno);
                     materia.setMediaFinal(resultado.getDouble("MediaFinal"));
                     materia.setMediaParcial(resultado.getDouble("MedialParcial"));
-                    
-                  
-                    
+                   
                     
                     Disciplina disciplina = new Disciplina();
                     disciplina.setIdDisciplina(resultado.getInt("idDisciplina"));
-                    disciplina.setNome(resultado.getString("NomeDisciplina"));
+                    disciplina.setNome(resultado.getString("d.Nome"));
+                    
                     
                     Usuario usuario = new Usuario();
-                    usuario.setNome(resultado.getString("Nome"));
+                    usuario.setNome(resultado.getString("u.Nome"));
+                    usuario.setIdUser(resultado.getInt("u.idUsuario"));
+                    
+                    Aluno alunos = new Aluno();
+                    alunos.setIdAluno(resultado.getInt("a.idAluno"));
+                    
+                    alunos.setUsuario(usuario);
                     
                     Professor professor = new Professor();
-                    professor.setIdUser(resultado.getInt("idProfessor"));
+                   // professor.setIdUser(resultado.getInt("idProfessor"));
                     professor.setUsuario(usuario);
                     
                     disciplina.setProfessor(professor);
@@ -170,7 +187,7 @@ public class ProfessorDAOJDBC extends DAOBaseJDBC implements ProfessorDAO {
                     materia.setProva2(prova2);
                     Prova provaFinal = provajdbc.pegarProva(3, disciplina.getIdDisciplina());
                     materia.setProvaFinal(provaFinal);
-                    
+                    materia.setAluno(alunos);
                     materias.add(materia);
                 }
             } catch (SQLException ex) {
