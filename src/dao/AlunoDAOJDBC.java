@@ -24,6 +24,7 @@ import modelo.AlunoHasDisciplina;
 import modelo.Disciplina;
 import modelo.Endereco;
 import modelo.Professor;
+import modelo.Prova;
 import modelo.Usuario;
 import tools.DAOBaseJDBC;
 
@@ -144,8 +145,8 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
      
     @Override
     public ObservableList<AlunoHasDisciplina> listarDisciplina(Aluno aluno) {
-
-        String consulta = "SELECT a.MediaFinal, a.MedialParcial, a.idDisciplina, d.Nome as NomeDisciplina,"
+        ProvaDAOJDBC provajdbc = new ProvaDAOJDBC();
+        String consulta = "SELECT a.MediaFinal, a.MediaParcial, a.idDisciplina, d.Nome as NomeDisciplina,"
                 + " u.Nome as NomeProfessor, p.idProfessor, d.idDisciplina "
                 + " FROM aluno_has_disciplina a inner join"
                 + " disciplina d on a.idDisciplina = d.idDisciplina"
@@ -153,7 +154,7 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
                 + " inner join usuario u on p.idUsuario = u.idUsuario"
                 + " WHERE idAluno = ?";
         ObservableList<AlunoHasDisciplina> materias = FXCollections.observableArrayList();
-        
+            
             try {
                 PreparedStatement stmt;
                 stmt = conn.prepareStatement(consulta);
@@ -163,7 +164,7 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
                     AlunoHasDisciplina materia = new AlunoHasDisciplina();
                     materia.setAluno(aluno);
                     materia.setMediaFinal(resultado.getDouble("MediaFinal"));
-                    materia.setMediaParcial(resultado.getDouble("MedialParcial"));
+                    materia.setMediaParcial(resultado.getDouble("MediaParcial"));
                     
                     
                     
@@ -181,6 +182,13 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
                     disciplina.setProfessor(professor);
                     
                     materia.setDisciplina(disciplina);
+                    
+                    Prova prova1 = provajdbc.pegarProva(1,disciplina.getIdDisciplina());
+                    materia.setProva1(prova1);
+                    Prova prova2 = provajdbc.pegarProva(2,disciplina.getIdDisciplina());
+                    materia.setProva2(prova2);
+                    Prova provaFinal = provajdbc.pegarProva(3, disciplina.getIdDisciplina());
+                    materia.setProvaFinal(provaFinal);
                     
                     materias.add(materia);
                 }
