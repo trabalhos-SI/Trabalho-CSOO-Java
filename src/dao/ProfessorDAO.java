@@ -21,4 +21,5 @@ public interface ProfessorDAO {
     
     public Professor buscarProfessor(Usuario usuario);
     public List<String> listarDisciplinas(Professor professor);
+    public ObservableList<AlunoHasDisciplina> listarDisciplinaAluno(Aluno aluno, String nome);
 }

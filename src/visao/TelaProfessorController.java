@@ -23,11 +23,14 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.Tooltip;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javax.swing.Action;
 import modelo.Aluno;
+import modelo.AlunoHasDisciplina;
 import modelo.Disciplina;
 import modelo.Professor;
 import modelo.Usuario;
@@ -47,8 +50,6 @@ public class TelaProfessorController implements Initializable {
     private Label lb_tel1;
     @FXML
     private Label lbTeste11;
-    @FXML
-    private ChoiceBox<String> cb_turma;
     @FXML
     private TableColumn<?, ?> cl_disciplinaProf;
     @FXML
@@ -95,12 +96,12 @@ public class TelaProfessorController implements Initializable {
     private Button btn_disciplinaProf;
     @FXML
     private Button btn_QuestaoProf;
-    @FXML
-    private Button btn_listar;
 
     private final List<Disciplina> listDisciplina = new ArrayList<>();
     @FXML
     private ComboBox<String> cb_teste;
+    @FXML
+    private TableView<AlunoHasDisciplina> tb_prof;
     
     /**
      * Initializes the controller class.
@@ -166,8 +167,22 @@ public class TelaProfessorController implements Initializable {
     @FXML
     public void selecionarItems(){
         
+        Aluno aluno;
+        AlunoDAOJDBC alunojdbc;
+        alunojdbc = new AlunoDAOJDBC();       
+        aluno = alunojdbc.buscarAluno(usuario);
+        
+        Professor professor;
+        ProfessorDAOJDBC professorjdbc;
+        professorjdbc = new ProfessorDAOJDBC();
+        professor = professorjdbc.buscarProfessor(usuario);
+        
         String nome = cb_teste.getSelectionModel().getSelectedItem();
-        System.out.println("Nome: " + nome);
+        
+        cl_mediaFinalProf.setCellValueFactory(new PropertyValueFactory("mediaFinal"));
+        cl_mpProf.setCellValueFactory(new PropertyValueFactory("mediaParcial"));
+        cl_disciplinaProf.setCellValueFactory(new PropertyValueFactory("Nome"));
+        tb_prof.setItems(FXCollections.observableArrayList(professorjdbc.listarDisciplinaAluno(aluno, nome)));
 
         
     }

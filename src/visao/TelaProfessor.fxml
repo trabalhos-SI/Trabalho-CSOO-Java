@@ -33,7 +33,7 @@
                </children>
             </Pane>
             <Label fx:id="lbTeste11" layoutX="105.0" layoutY="438.0" text="© Copyright 2017 - LFPP LTDA, todos os direitos reservados." />
-            <TableView layoutX="22.0" layoutY="158.0" prefHeight="200.0" prefWidth="466.0">
+            <TableView fx:id="tb_prof" layoutX="22.0" layoutY="158.0" prefHeight="200.0" prefWidth="466.0">
                <columns>
                   <TableColumn fx:id="cl_disciplinaProf" prefWidth="211.0" text="Aluno" />
                   <TableColumn fx:id="cl_prova1Prof" prefWidth="48.0" text="Prova 1" />
