@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="546.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="visao.TelaQuestaoObjController">
+    <stylesheets>
+        <URL value="@/estilo/telaquestaoobj.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="139.0" layoutY="7.0" text="CADASTRO DE QUESTÃO OBJETIVA">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txt_assunto" layoutX="86.0" layoutY="53.0" prefHeight="25.0" prefWidth="322.0" />
+      <Label layoutX="27.0" layoutY="56.0" text="Assunto:">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="446.0" layoutY="138.0" text="Nível de dificuldade:">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="check_dificuldade" layoutX="471.0" layoutY="166.0" prefHeight="25.0" prefWidth="68.0" />
+      <TextArea fx:id="txt_questao" layoutX="27.0" layoutY="108.0" maxHeight="458.0" prefColumnCount="10" prefHeight="106.0" prefWidth="381.0" wrapText="true" />
+      <Label layoutX="27.0" layoutY="89.0" text="Descreva sua questão objetiva:">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="27.0" layoutY="219.0" text="Alternativas:">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="27.0" layoutY="249.0" text="A - ">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txt_alter_a" layoutX="47.0" layoutY="246.0" prefHeight="25.0" prefWidth="535.0" />
+      <Label layoutX="27.0" layoutY="291.0" text="B - ">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txt_alter_b" layoutX="47.0" layoutY="287.0" prefHeight="25.0" prefWidth="535.0" />
+      <TextField fx:id="txt_alter_c" layoutX="47.0" layoutY="331.0" prefHeight="25.0" prefWidth="535.0" />
+      <TextField fx:id="txt_alter_d" layoutX="47.0" layoutY="373.0" prefHeight="25.0" prefWidth="535.0" />
+      <TextField fx:id="txt_alter_e" layoutX="47.0" layoutY="415.0" prefHeight="25.0" prefWidth="535.0" />
+      <Label layoutX="27.0" layoutY="334.0" text="C - ">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="27.0" layoutY="376.0" text="D - ">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="28.0" layoutY="418.0" text="E - ">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="27.0" layoutY="461.0" text="Alternativa Correta:">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="check_alt_correta" layoutX="165.0" layoutY="458.0" prefHeight="25.0" prefWidth="62.0" />
+      <Button fx:id="btn_cancelar" layoutX="433.0" layoutY="483.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="116.0" text="Cancelar" />
+      <Button fx:id="btn_cadastrar" layoutX="300.0" layoutY="483.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="116.0" text="Cadastrar Questão" />
+   </children>
+</AnchorPane>

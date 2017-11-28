@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visao.TelaQuestaoDiscController">
+    <stylesheets>
+        <URL value="@/estilo/telaquestaodisc.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="139.0" layoutY="7.0" text="CADASTRO DE QUESTÃO DISCURSIVA">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="28.0" layoutY="86.0" text="Descreva sua questão discursiva:">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="28.0" layoutY="226.0" text="Descreva uma possível resposta para a pergunta acima:">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Label>
+      <Button fx:id="btn_cadastrar" layoutX="273.0" layoutY="347.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="116.0" text="Cadastrar Questão" />
+      <Button fx:id="btn_cancelar" layoutX="406.0" layoutY="347.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="116.0" text="Cancelar" />
+      <TextArea fx:id="txt_resposta" layoutX="28.0" layoutY="245.0" maxHeight="458.0" prefColumnCount="10" prefHeight="84.0" prefWidth="381.0" wrapText="true" />
+      <TextArea fx:id="txt_questao" layoutX="28.0" layoutY="105.0" maxHeight="458.0" prefColumnCount="10" prefHeight="106.0" prefWidth="381.0" wrapText="true" />
+      <ComboBox fx:id="check_dificuldade" layoutX="469.0" layoutY="160.0" onAction="#selecionaNivel" prefHeight="25.0" prefWidth="68.0" />
+      <Label layoutX="444.0" layoutY="132.0" text="Nível de dificuldade:">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="31.0" layoutY="52.0" text="Assunto:">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txt_assunto" layoutX="90.0" layoutY="49.0" prefHeight="25.0" prefWidth="322.0" />
+   </children>
+</AnchorPane>

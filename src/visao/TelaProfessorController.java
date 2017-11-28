@@ -7,6 +7,7 @@ package visao;
 
 import dao.AlunoDAOJDBC;
 import dao.ProfessorDAOJDBC;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +18,12 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -28,7 +33,9 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import javax.swing.Action;
+import javax.swing.JOptionPane;
 import modelo.Aluno;
 import modelo.AlunoHasDisciplina;
 import modelo.Disciplina;
@@ -102,6 +109,12 @@ public class TelaProfessorController implements Initializable {
     private ComboBox<String> cb_teste;
     @FXML
     private TableView<AlunoHasDisciplina> tb_prof;
+    @FXML
+    private CheckBox check_dis;
+    @FXML
+    private CheckBox check_ob;
+    @FXML
+    private Button btn_criar_questao;
     
     /**
      * Initializes the controller class.
@@ -158,6 +171,69 @@ public class TelaProfessorController implements Initializable {
                 Tela_QuestoesProf.toFront();
             }
             
+            
+        });
+        
+        
+        btn_criar_questao.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            
+            
+            @Override
+            public void handle(ActionEvent event){
+                
+
+                if(check_dis.selectedProperty().getValue() == false && check_ob.selectedProperty().getValue() == false){
+                    
+                    JOptionPane.showMessageDialog(null, "Por favor, escolha uma das duas opções!");
+                }else if(check_dis.selectedProperty().getValue() == true && check_ob.selectedProperty().getValue() == true){
+                    
+                    JOptionPane.showMessageDialog(null, "Escolha somente uma das opções!");
+                }else{
+                    
+                    if(check_dis.selectedProperty().getValue() == true){
+                        
+                        Stage stage = new Stage();
+                        Parent root;
+                       
+                        try{
+                            root = FXMLLoader.load(getClass().getResource("/visao/TelaQuestaoDisc.fxml"));
+                            //stage.initStyle(StageStyle.TRANSPARENT);
+                            Scene scene = new Scene(root);
+                            stage.setScene(scene);
+                            stage.setResizable(false);
+                            stage.show();
+                            
+                        }catch(IOException ex){
+                            JOptionPane.showMessageDialog(null, "erro aqui: " + ex);
+                        }// FIM DO CATCH
+                        //btnLogar.getScene().getWindow().hide();
+                        
+                    }else{
+                        
+                        Stage stage = new Stage();
+                        Parent root;
+                       
+                        try{
+                            root = FXMLLoader.load(getClass().getResource("/visao/TelaQuestaoObj.fxml"));
+                            //stage.initStyle(StageStyle.TRANSPARENT);
+                            Scene scene = new Scene(root);
+                            stage.setScene(scene);
+                            stage.setResizable(false);
+                            stage.show();
+                            
+                        }catch(IOException ex){
+                            JOptionPane.showMessageDialog(null, "erro aqui: " + ex);
+                        }// FIM DO CATCH
+                        //btnLogar.getScene().getWindow().hide();              
+                        
+                        
+                        
+                    }// FIM DO ELSE
+                    
+                    
+                }// FIM DO ELSE
+                
+            }//FIM DO HANDLE EVENT
             
         });
         
