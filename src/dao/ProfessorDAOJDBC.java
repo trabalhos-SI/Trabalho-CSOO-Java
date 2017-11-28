@@ -138,7 +138,7 @@ public class ProfessorDAOJDBC extends DAOBaseJDBC implements ProfessorDAO {
 //                + " inner join usuario u on p.idUsuario = u.idUsuario"
 //                + " WHERE d.Nome = ?";
 
-        String consulta = "SELECT u.idUsuario, u.Nome, a.idAluno, ad.MedialParcial, ad.MediaFinal,"
+        String consulta = "SELECT u.idUsuario, u.Nome, a.idAluno, ad.MediaParcial, ad.MediaFinal,"
                 + " d.idDisciplina, a.idAluno, d.Nome FROM disciplina d INNER JOIN aluno_has_disciplina ad"
                 + " ON d.idDisciplina = ad.idDisciplina INNER JOIN aluno a"
                 + " ON ad.idAluno = a.idAluno INNER JOIN usuario u"
@@ -156,7 +156,7 @@ public class ProfessorDAOJDBC extends DAOBaseJDBC implements ProfessorDAO {
                     AlunoHasDisciplina materia = new AlunoHasDisciplina();
                     materia.setAluno(aluno);
                     materia.setMediaFinal(resultado.getDouble("MediaFinal"));
-                    materia.setMediaParcial(resultado.getDouble("MedialParcial"));
+                    materia.setMediaParcial(resultado.getDouble("MediaParcial"));
                    
                     
                     Disciplina disciplina = new Disciplina();

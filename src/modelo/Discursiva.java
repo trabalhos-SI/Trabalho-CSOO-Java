@@ -9,7 +9,7 @@ package modelo;
  *
  * @author Leandro
  */
-public class Discursiva {
+public class Discursiva extends Questao{
     
     private String respostaEsperada;
     private int idQuestao;

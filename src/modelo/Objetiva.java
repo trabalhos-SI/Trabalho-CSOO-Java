@@ -9,7 +9,7 @@ package modelo;
  *
  * @author Leandro
  */
-public class Objetiva {
+public class Objetiva extends Questao{
     
     private String alternativaA;
     private String alternativaB;

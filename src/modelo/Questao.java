@@ -16,9 +16,7 @@ public class Questao {
     private String assunto;
     private String enunciado;
     private int tipo;
-    private Objetiva objetiva;
-    private Discursiva discursiva;
-
+   
     public Questao() {
     }
 
@@ -66,22 +64,4 @@ public class Questao {
         this.tipo = tipo;
     }
 
-    public Objetiva getObjetiva() {
-        return objetiva;
-    }
-
-    public void setObjetiva(Objetiva objetiva) {
-        this.objetiva = objetiva;
-    }
-
-    public Discursiva getDiscursiva() {
-        return discursiva;
-    }
-
-    public void setDiscursiva(Discursiva discursiva) {
-        this.discursiva = discursiva;
-    }
-    
-    
-    
 }

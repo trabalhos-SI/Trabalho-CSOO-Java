@@ -80,16 +80,11 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
                 dadoUsuario.setTelefone(resultado.getString("Telefone"));
                 dadoUsuario.setNome(resultado.getString("Nome"));
                 
-                
-                
-                
-                
+     
                 Set<Disciplina> listDisciplinas = null;
                 listDisciplinas = new HashSet<Disciplina>();
                 
-                
-                
-                
+    
                 while(resultado.next()){
                     
                     Disciplina disc = new Disciplina();
