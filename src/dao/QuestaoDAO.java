@@ -5,6 +5,7 @@
  */
 package dao;
 
+import modelo.Discursiva;
 import modelo.Objetiva;
 import visao.TelaQuestaoObjController;
 
@@ -15,6 +16,8 @@ import visao.TelaQuestaoObjController;
 public interface QuestaoDAO {
     
     public void cadastrarQuestaoObjetiva(Objetiva objetiva);
+    public void cadastrarQuestaoDiscursiva(Discursiva discursiva);
     public int ultimoIdCadastrado();
     public void incluirObjetiva(Objetiva objetiva);
+    public void incluirDiscursiva(Discursiva discursiva);
 }

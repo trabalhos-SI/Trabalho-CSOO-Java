@@ -5,6 +5,7 @@
  */
 package visao;
 
+import dao.QuestaoDAOJDBC;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -20,7 +21,9 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
+import javax.swing.JOptionPane;
 import javax.swing.ScrollPaneConstants;
+import modelo.Discursiva;
 
 /**
  * FXML Controller class
@@ -67,6 +70,19 @@ public class TelaQuestaoDiscController implements Initializable {
         btn_cadastrar.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
+                
+                QuestaoDAOJDBC questaoOb = new QuestaoDAOJDBC();
+                Discursiva disc = new Discursiva();
+                disc.setNivel(Integer.parseInt(check_dificuldade.getSelectionModel().getSelectedItem()));
+                disc.setAssunto(txt_assunto.getText());
+                disc.setEnunciado(txt_questao.getText());
+                disc.setTipo(2);
+                questaoOb.cadastrarQuestaoDiscursiva(disc);
+                
+                disc.setRespostaEsperada(txt_resposta.getText());
+                disc.setIdQuestao(questaoOb.ultimoIdCadastrado());
+                questaoOb.incluirDiscursiva(disc);
+                JOptionPane.showMessageDialog(null, "questao cadastrada");
                 
                 
             }

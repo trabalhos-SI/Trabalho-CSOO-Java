@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javax.swing.JOptionPane;
+import modelo.Discursiva;
 import modelo.Objetiva;
 import modelo.Questao;
 import tools.DAOBaseJDBC;
@@ -47,6 +48,49 @@ public class QuestaoDAOJDBC extends DAOBaseJDBC implements QuestaoDAO{
            
     }
     
+    public void cadastrarQuestaoDiscursiva(Discursiva discursiva){
+        
+        TelaQuestaoObjController telaObj = new TelaQuestaoObjController();
+        String consulta = "INSERT INTO Questao(Nivel, Assunto, Enunciado, Tipo) VALUES"
+                + "(?, ?, ?, ?)";
+        try{
+            
+            PreparedStatement stmt = conn.prepareStatement(consulta);
+            stmt.setInt(1, discursiva.getNivel());
+            stmt.setString(2, discursiva.getAssunto());
+            stmt.setString(3, discursiva.getEnunciado());
+            stmt.setInt(4, discursiva.getTipo());
+            stmt.executeUpdate();
+            stmt.close();
+      
+        } catch (SQLException ex) {
+            Logger.getLogger(QuestaoDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+        
+   
+    @Override
+    public void incluirDiscursiva(Discursiva discursiva){
+        
+        String consulta = "INSERT INTO Discursiva(respostaEsperada, idQuestao) VALUES("
+                + "?, ?)";
+        
+        try{
+            PreparedStatement stmt = conn.prepareStatement(consulta);
+            stmt.setString(1, discursiva.getRespostaEsperada());
+            stmt.setInt(2, discursiva.getIdQuestao());
+            stmt.executeUpdate();
+            stmt.close();
+            
+        }catch(SQLException e){
+            
+            JOptionPane.showMessageDialog(null, "Erro sql");
+        }
+    }
+        
+    
+    @Override
     public void incluirObjetiva(Objetiva objetiva){
         
         String consulta = "INSERT INTO Objetiva(alternativaA, alternativaB, alternativaC, alternativaD"
