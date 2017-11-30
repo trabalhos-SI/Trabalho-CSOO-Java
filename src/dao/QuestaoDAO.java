@@ -5,10 +5,16 @@
  */
 package dao;
 
+import modelo.Objetiva;
+import visao.TelaQuestaoObjController;
+
 /**
  *
  * @author Leandro
  */
 public interface QuestaoDAO {
     
+    public void cadastrarQuestaoObjetiva(Objetiva objetiva);
+    public int ultimoIdCadastrado();
+    public void incluirObjetiva(Objetiva objetiva);
 }

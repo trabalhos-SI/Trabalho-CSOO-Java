@@ -105,7 +105,5 @@ public class AlunoHasDisciplina {
         this.ProvaFinal = ProvaFinal;
     }
     
-   
-    
-    
+
 }

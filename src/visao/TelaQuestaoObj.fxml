@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="546.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="visao.TelaQuestaoObjController">
+<AnchorPane id="AnchorPane" prefHeight="546.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visao.TelaQuestaoObjController">
     <stylesheets>
         <URL value="@/estilo/telaquestaoobj.css" />
     </stylesheets>
@@ -29,7 +29,7 @@
             <Font name="System Bold Italic" size="13.0" />
          </font>
       </Label>
-      <ComboBox fx:id="check_dificuldade" layoutX="471.0" layoutY="166.0" prefHeight="25.0" prefWidth="68.0" />
+      <ComboBox fx:id="check_dificuldade" layoutX="471.0" layoutY="166.0" onAction="#selecionaNivel" prefHeight="25.0" prefWidth="68.0" />
       <TextArea fx:id="txt_questao" layoutX="27.0" layoutY="108.0" maxHeight="458.0" prefColumnCount="10" prefHeight="106.0" prefWidth="381.0" wrapText="true" />
       <Label layoutX="27.0" layoutY="89.0" text="Descreva sua questão objetiva:">
          <font>

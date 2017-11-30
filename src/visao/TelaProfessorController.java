@@ -192,6 +192,7 @@ public class TelaProfessorController implements Initializable {
                     
                     if(check_dis.selectedProperty().getValue() == true){
                         
+                        check_dis.selectedProperty().setValue(Boolean.FALSE);
                         Stage stage = new Stage();
                         Parent root;
                        
@@ -210,6 +211,7 @@ public class TelaProfessorController implements Initializable {
                         
                     }else{
                         
+                        check_ob.selectedProperty().setValue(Boolean.FALSE);
                         Stage stage = new Stage();
                         Parent root;
                        

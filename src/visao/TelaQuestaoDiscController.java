@@ -9,6 +9,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -59,6 +61,18 @@ public class TelaQuestaoDiscController implements Initializable {
         observandolista = FXCollections.observableArrayList("1", "2", "3", "4", "5");
         check_dificuldade.setItems(observandolista);
         //
+        
+        
+        
+        btn_cadastrar.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                
+                
+            }
+  
+        });
+        
     
  
     }    
