@@ -5,6 +5,8 @@
  */
 package dao;
 
+
+import javafx.collections.ObservableList;
 import modelo.Prova;
 
 /**
@@ -14,5 +16,7 @@ import modelo.Prova;
 public interface ProvaDAO {
     
     public Prova pegarProva(int tipo, int idDisciplina);
+    public ObservableList<String> listarIdProvas();
+    public void MontarQuestaoProva(int idquestao, int idProva);
 
 }

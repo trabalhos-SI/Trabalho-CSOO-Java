@@ -6,6 +6,7 @@
 package visao;
 
 import dao.ProfessorDAOJDBC;
+import dao.ProvaDAOJDBC;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -14,10 +15,12 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -66,6 +69,8 @@ public class TelaMontarProvaController implements Initializable {
     private Button btn_finalizar;
     @FXML
     private Button btn_voltar;
+    @FXML
+    private ComboBox<String> cb_idProva;
     
     /**
      * Initializes the controller class.
@@ -90,6 +95,15 @@ public class TelaMontarProvaController implements Initializable {
         tb_discursiva.setItems(FXCollections.observableArrayList(professorjdbc.listarQuestoesDiscursivas()));
         
         
+        //COMBOBOX
+        
+        ProvaDAOJDBC provajdbc = new ProvaDAOJDBC();
+        
+        cb_idProva.setTooltip(new Tooltip("Selecione a disciplina"));
+        cb_idProva.setValue(" ");
+        cb_idProva.setItems(FXCollections.observableArrayList(provajdbc.listarIdProvas()));
+        
+        
         //SELECIONAR QUESTAO
         tb_objetiva.getSelectionModel().selectedItemProperty().addListener((observable, 
         oldValue, newValue) -> selecionarItemTableObjetiva(newValue));
@@ -102,8 +116,12 @@ public class TelaMontarProvaController implements Initializable {
                  count_obj.setText(Integer.toString(countObj));
                  JOptionPane.showMessageDialog(null, "Questao Selecionada");
                  
-                 int num = tb_objetiva.getSelectionModel().selectedItemProperty().getValue().getIdQuestao();
-                 System.out.println(num);
+                 int numIdQuestao = tb_objetiva.getSelectionModel().selectedItemProperty().getValue().getIdQuestao();
+                 int numIdProva = Integer.parseInt(cb_idProva.getSelectionModel().getSelectedItem());
+                 
+                 
+                 ProvaDAOJDBC prova = new ProvaDAOJDBC();
+                 prova.MontarQuestaoProva(numIdQuestao, numIdProva);
                  
                  
              }
@@ -116,6 +134,13 @@ public class TelaMontarProvaController implements Initializable {
                  countDisc += 1;
                  count_disc.setText(Integer.toString(countDisc));
                  JOptionPane.showMessageDialog(null, "Questao Selecionada");
+                 
+                 int numIdQuestao = tb_discursiva.getSelectionModel().selectedItemProperty().getValue().getIdQuestao();
+                 int numIdProva = Integer.parseInt(cb_idProva.getSelectionModel().getSelectedItem());
+                 
+                 ProvaDAOJDBC prova = new ProvaDAOJDBC();
+                 prova.MontarQuestaoProva(numIdQuestao, numIdProva);
+                 
              }
     
         });

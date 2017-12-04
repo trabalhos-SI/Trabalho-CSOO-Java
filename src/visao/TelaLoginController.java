@@ -111,7 +111,7 @@ public class TelaLoginController implements Initializable {
                             JOptionPane.showMessageDialog(null, "erro aqui: " + ex);
                         }
                         btnLogar.getScene().getWindow().hide();
-                    }else{
+                    }else if(usuario.getTipo() == 2){
                         
                         Stage stage = new Stage();
                         Parent root;
@@ -128,6 +128,25 @@ public class TelaLoginController implements Initializable {
                             JOptionPane.showMessageDialog(null, "erro aqui: " + ex);
                         }
                         btnLogar.getScene().getWindow().hide();
+                        
+                    }else{
+                        
+                        Stage stage = new Stage();
+                        Parent root;
+                       
+                        try{
+                            root = FXMLLoader.load(getClass().getResource("/visao/TelaCoordenador.fxml"));
+                            //stage.initStyle(StageStyle.TRANSPARENT);
+                            Scene scene = new Scene(root);
+                            stage.setScene(scene);
+                            stage.setResizable(false);
+                            stage.show();
+                            
+                        }catch(IOException ex){
+                            JOptionPane.showMessageDialog(null, "erro aqui: " + ex);
+                        }
+                        btnLogar.getScene().getWindow().hide();
+                        
                         
                     }
    

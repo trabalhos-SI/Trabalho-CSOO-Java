@@ -8,8 +8,13 @@ package dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javax.swing.JOptionPane;
 import modelo.Disciplina;
 import modelo.Prova;
 import tools.DAOBaseJDBC;
@@ -53,6 +58,56 @@ public class ProvaDAOJDBC extends DAOBaseJDBC implements ProvaDAO{
              System.out.println("Error :" + ex);
         }
         return prova;
+    }
+    
+    @Override
+    public ObservableList<String> listarIdProvas(){
+       
+        ObservableList<String> listarIds = FXCollections.observableArrayList();
+        
+        String consulta = "SELECT * FROM Prova";
+        
+        List<String> lista = new ArrayList<>();
+        
+        try{
+            PreparedStatement stmt;
+            stmt = conn.prepareStatement(consulta);
+            ResultSet resultado = stmt.executeQuery();
+            
+            while(resultado.next()){
+                
+               // lista.add(Integer.toString(resultado.getInt("idProva")));
+                listarIds.add(Integer.toString(resultado.getInt("idProva")));
+                
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProvaDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        return listarIds;
+        
+        
+    }
+    
+    public void MontarQuestaoProva(int idQuestao, int idProva){
+        
+        String consulta = "INSERT INTO QuestaoProva(Questao_idQuestao, Prova_idProva) VALUES"
+                + "(?, ?)";
+        
+        try{
+            
+            PreparedStatement stmt = conn.prepareStatement(consulta);
+            stmt.setInt(1, idQuestao);
+            stmt.setInt(2, idProva);
+            stmt.executeUpdate();
+            stmt.close();
+            
+        } catch (SQLException ex) {
+            
+            JOptionPane.showMessageDialog(null, "Não foi possivel vincular questão a prova");
+        }
     }
     
 }
