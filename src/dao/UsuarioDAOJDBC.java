@@ -51,6 +51,40 @@ public class UsuarioDAOJDBC extends DAOBaseJDBC implements UsuarioDAO {
         return usuarioProcurado;
     }
 
+    @Override
+    public Usuario buscarUsuario(int idUser) {
+            Usuario usuarioProcurado = null;
+        String consulta = "SELECT * FROM Usuario WHERE idUsuario = ?";
+       try{
+            PreparedStatement stmt = conn.prepareStatement(consulta);
+            stmt.setInt(1,idUser);
+            ResultSet resultado = stmt.executeQuery();
+            
+            if(resultado.next()){
+                usuarioProcurado = new Usuario();
+                
+                usuarioProcurado.setIdUser(resultado.getInt("idUsuario"));
+                usuarioProcurado.setTipo(resultado.getInt("TipoUsuario"));
+                usuarioProcurado.setLogin(resultado.getString("Login"));
+                usuarioProcurado.setSenha(resultado.getString("Senha"));
+                usuarioProcurado.setEmail(resultado.getString("Email"));
+                usuarioProcurado.setMatricula(resultado.getString("Matricula"));
+                usuarioProcurado.setDataNascimento(resultado.getString("DataNascimento"));
+                usuarioProcurado.setTelefone(resultado.getString("Telefone"));
+                usuarioProcurado.setNome(resultado.getString("Nome"));
+                stmt.close();
+            }else{
+                return null;
+            }
+            
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Erro no banco de dados: - " + e.getMessage());
+        }
+   
+        return usuarioProcurado;
+        
+    }
+
 
 
 }

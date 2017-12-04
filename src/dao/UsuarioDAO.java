@@ -14,4 +14,6 @@ import modelo.Usuario;
 public interface UsuarioDAO {
     
     public Usuario consultarLogin(String user, String password);
+    
+    public Usuario buscarUsuario(int idUser);
 }
