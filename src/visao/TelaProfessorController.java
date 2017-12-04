@@ -115,6 +115,8 @@ public class TelaProfessorController implements Initializable {
     private CheckBox check_ob;
     @FXML
     private Button btn_criar_questao;
+    @FXML
+    private Button btn_montar_prova;
     
     /**
      * Initializes the controller class.
@@ -236,6 +238,32 @@ public class TelaProfessorController implements Initializable {
                 }// FIM DO ELSE
                 
             }//FIM DO HANDLE EVENT
+            
+        });
+        
+        
+        btn_montar_prova.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                
+                  Stage stage = new Stage();
+                        Parent root;
+                       
+                        try{
+                            root = FXMLLoader.load(getClass().getResource("/visao/TelaMontarProva.fxml"));
+                            //stage.initStyle(StageStyle.TRANSPARENT);
+                            Scene scene = new Scene(root);
+                            stage.setScene(scene);
+                            stage.setResizable(false);
+                            stage.show();
+                            
+                        }catch(IOException ex){
+                            JOptionPane.showMessageDialog(null, "erro aqui: " + ex);
+                        }// FIM DO CATCH
+                        //btnLogar.getScene().getWindow().hide();
+                
+            }
+            
             
         });
         

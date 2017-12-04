@@ -10,13 +10,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javax.swing.JOptionPane;
 import modelo.Aluno;
 import modelo.AlunoHasDisciplina;
 import modelo.Disciplina;
+import modelo.Discursiva;
 import modelo.Endereco;
+import modelo.Objetiva;
 import modelo.Professor;
 import modelo.Prova;
 import modelo.Usuario;
@@ -197,6 +201,85 @@ public class ProfessorDAOJDBC extends DAOBaseJDBC implements ProfessorDAO {
         
         
         return materias;
+        
+    }
+    
+    public ObservableList<Objetiva> listarQuestoesObjetivas(){
+        
+        
+        String consulta = "SELECT o.alternativaA, o.alternativaB, o.alternativaC, o.alternativaD, "
+                + "o.alternativaE, o.alternativaCorreta, o.idQuestao, q.idQuestao, q.Nivel, q.Assunto, q.Enunciado, "
+                + "q.Tipo FROM Objetiva o INNER JOIN Questao q "
+                + "ON q.idQuestao = o.idQuestao";
+
+        ObservableList<Objetiva> questoesObj = FXCollections.observableArrayList();
+        
+        try{
+            PreparedStatement stmt;
+            stmt = conn.prepareStatement(consulta);
+            ResultSet resultado = stmt.executeQuery();
+            
+                while(resultado.next()){
+                    
+                Objetiva objetivas = new Objetiva();
+                objetivas.setAlternativaA(resultado.getString("alternativaA"));
+                objetivas.setAlternativaB(resultado.getString("alternativaB"));
+                objetivas.setAlternativaC(resultado.getString("alternativaC"));
+                objetivas.setAlternativaD(resultado.getString("alternativaD"));
+                objetivas.setAlternativaE(resultado.getString("alternativaE"));
+                objetivas.setAlternativaCorreta(resultado.getInt("alternativaCorreta"));
+                objetivas.setIdQuestao(resultado.getInt("idQuestao"));
+                objetivas.setNivel(resultado.getInt("Nivel"));
+                objetivas.setAssunto(resultado.getString("Assunto"));
+                objetivas.setEnunciado(resultado.getString("Enunciado"));
+                objetivas.setTipo(resultado.getInt("Tipo"));
+                questoesObj.add(objetivas);
+                    
+                }
+                
+                    
+          
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro carregar objetiva" + ex.getMessage());
+        }
+        
+        return questoesObj;
+    }
+    
+    public ObservableList<Discursiva> listarQuestoesDiscursivas(){
+        
+        String consulta = "SELECT d.respostaEsperada, d.idQuestao, q.idQuestao, q.Nivel, "
+                + "q.Assunto, q.Enunciado, q.Tipo FROM Questao q INNER JOIN Discursiva d "
+                + "ON q.idQuestao = d.idQuestao";
+        
+        ObservableList<Discursiva> questoesDisc = FXCollections.observableArrayList();
+        
+        try{
+            PreparedStatement stmt;
+            stmt = conn.prepareStatement(consulta);
+            ResultSet resultado = stmt.executeQuery();
+            
+            while(resultado.next()){
+                
+                Discursiva discursivas = new Discursiva();
+                
+                discursivas.setIdQuestao(resultado.getInt("idQuestao"));
+                discursivas.setNivel(resultado.getInt("Nivel"));
+                discursivas.setAssunto(resultado.getString("Assunto"));
+                discursivas.setEnunciado(resultado.getString("Enunciado"));
+                discursivas.setTipo(resultado.getInt("Tipo"));
+                discursivas.setRespostaEsperada(resultado.getString("respostaEsperada"));
+                questoesDisc.add(discursivas);
+                
+            }
+            
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro carregar discursiva" + ex.getMessage());
+        }
+        
+        return questoesDisc;
+        
         
     }
     

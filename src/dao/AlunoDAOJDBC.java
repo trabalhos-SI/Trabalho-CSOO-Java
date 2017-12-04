@@ -156,6 +156,7 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
                 stmt.setInt(1, aluno.getIdAluno());
                 ResultSet resultado = stmt.executeQuery();
                 while (resultado.next()) {
+                    
                     AlunoHasDisciplina materia = new AlunoHasDisciplina();
                     materia.setAluno(aluno);
                     materia.setMediaFinal(resultado.getDouble("MediaFinal"));

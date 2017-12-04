@@ -10,6 +10,8 @@ import javafx.collections.ObservableList;
 import modelo.Aluno;
 import modelo.AlunoHasDisciplina;
 import modelo.Disciplina;
+import modelo.Discursiva;
+import modelo.Objetiva;
 import modelo.Professor;
 import modelo.Usuario;
 
@@ -22,4 +24,6 @@ public interface ProfessorDAO {
     public Professor buscarProfessor(Usuario usuario);
     public List<String> listarDisciplinas(Professor professor);
     public ObservableList<AlunoHasDisciplina> listarDisciplinaAluno(Aluno aluno, String nome);
+    public ObservableList<Objetiva> listarQuestoesObjetivas();
+    public ObservableList<Discursiva> listarQuestoesDiscursivas();
 }
