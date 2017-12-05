@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visao.TelaQuestaoDiscController">
+<AnchorPane id="AnchorPane" fx:id="tela_cadastro_disc" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visao.TelaQuestaoDiscController">
     <stylesheets>
         <URL value="@/estilo/telaquestaodisc.css" />
     </stylesheets>

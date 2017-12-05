@@ -28,4 +28,5 @@ public interface AlunoDAO {
     public Aluno buscarAluno(Usuario usuario);
     public ObservableList<AlunoHasDisciplina> listarDisciplina(Aluno aluno);
     public List<Aluno> listarAlunos();
+    public void salvarAluno(Aluno aluno);
 }

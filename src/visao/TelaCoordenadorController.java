@@ -114,7 +114,7 @@ public class TelaCoordenadorController implements Initializable {
                     JOptionPane.showMessageDialog(null, "Matricula não encontrada");
           
                 }else{
-                    JOptionPane.showMessageDialog(null, "Matricula encontrada");
+                    //JOptionPane.showMessageDialog(null, "Matricula encontrada");
                     col_id_aluno.setCellValueFactory(new PropertyValueFactory("idAluno"));
                     col_matricula_aluno.setCellValueFactory(new PropertyValueFactory("Matricula"));
                     col_nome_aluno.setCellValueFactory(new PropertyValueFactory("Nome"));
@@ -164,8 +164,8 @@ public class TelaCoordenadorController implements Initializable {
             
         });
         
-        
-        
+      
+       
     }    
     
 }

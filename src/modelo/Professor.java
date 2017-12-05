@@ -51,10 +51,6 @@ public class Professor extends Usuario {
         this.usuario = usuario;
     }
     
-    
-    
-    
-
     public Professor() {
     }
 

@@ -13,6 +13,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -196,6 +197,27 @@ public class AlunoDAOJDBC extends DAOBaseJDBC implements AlunoDAO {
         
         
         return materias;
+    }
+    
+    public void salvarAluno(Aluno aluno){
+        
+        String consulta = "UPDATE Usuario SET Telefone = ?,DataNascimento = ?, Email = ? "
+                + "WHERE idUsuario = ?";
+        
+        
+        try{
+            PreparedStatement stmt = conn.prepareStatement(consulta);
+            stmt.setString(1, aluno.getTelefone());
+            stmt.setString(2, aluno.getDataNascimento());
+            stmt.setString(3, aluno.getEmail());
+            stmt.setInt(4, aluno.getIdAluno());
+            stmt.executeUpdate();
+            stmt.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AlunoDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
     

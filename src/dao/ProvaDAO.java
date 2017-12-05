@@ -18,5 +18,6 @@ public interface ProvaDAO {
     public Prova pegarProva(int tipo, int idDisciplina);
     public ObservableList<String> listarIdProvas();
     public void MontarQuestaoProva(int idquestao, int idProva);
+    public void registrarProva(Prova prova, int idDisciplina);
 
 }

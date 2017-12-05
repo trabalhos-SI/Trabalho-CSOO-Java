@@ -21,6 +21,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
+import javafx.scene.layout.AnchorPane;
 import javax.swing.JOptionPane;
 import javax.swing.ScrollPaneConstants;
 import modelo.Discursiva;
@@ -44,10 +45,10 @@ public class TelaQuestaoDiscController implements Initializable {
     private ComboBox<String> check_dificuldade;
     @FXML
     private TextField txt_assunto;
-    @FXML
-    private Label lb_teste;
     
     private ObservableList<String> observandolista;
+    @FXML
+    private AnchorPane tela_cadastro_disc;
 
 
     /**
@@ -83,17 +84,24 @@ public class TelaQuestaoDiscController implements Initializable {
                 disc.setIdQuestao(questaoOb.ultimoIdCadastrado());
                 questaoOb.incluirDiscursiva(disc);
                 JOptionPane.showMessageDialog(null, "questao cadastrada");
-                
-                
+  
             }
   
         });
         
+        btn_cancelar.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                
+                tela_cadastro_disc.getScene().getWindow().hide();
+            }
+            
+        });
     
- 
     }    
 
     
+    @FXML
     public void selecionaNivel(){
         String nome = check_dificuldade.getSelectionModel().getSelectedItem();
         System.out.println(nome);

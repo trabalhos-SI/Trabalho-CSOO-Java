@@ -6,7 +6,9 @@
 package visao;
 
 import dao.AlunoDAOJDBC;
+import dao.CoordenadorDAOJDBC;
 import dao.ProfessorDAOJDBC;
+import dao.ProvaDAOJDBC;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -29,6 +31,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -40,6 +43,7 @@ import modelo.Aluno;
 import modelo.AlunoHasDisciplina;
 import modelo.Disciplina;
 import modelo.Professor;
+import modelo.Prova;
 import modelo.Usuario;
 import static visao.TelaLoginController.usuario;
 
@@ -117,6 +121,30 @@ public class TelaProfessorController implements Initializable {
     private Button btn_criar_questao;
     @FXML
     private Button btn_montar_prova;
+    @FXML
+    private Button btn_registrar_prova;
+    @FXML
+    private AnchorPane Tela_registrar_prova;
+    @FXML
+    private Label lb_tel111;
+    @FXML
+    private Label lbTeste1111;
+    @FXML
+    private ComboBox<String> cb_disc_registro_prova;
+    @FXML
+    private TextField txt_bimestre_cadastro;
+    @FXML
+    private TextField txt_ano_cadastro;
+    @FXML
+    private TextField txt_semestre_cadastro;
+    @FXML
+    private TextField txt_nota_cadastro;
+    @FXML
+    private TextField txt_tipo_cadastro;
+    @FXML
+    private Button btn_cadastrar_prova;
+    @FXML
+    private Button btn_cancelar_prova;
     
     /**
      * Initializes the controller class.
@@ -265,6 +293,47 @@ public class TelaProfessorController implements Initializable {
             }
             
             
+        });
+        
+        btn_registrar_prova.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                
+                Tela_registrar_prova.toFront();
+                CoordenadorDAOJDBC disciplinas = new CoordenadorDAOJDBC();
+                cb_disc_registro_prova.setItems(FXCollections.observableArrayList(disciplinas.retornarDisciplinas()));
+                
+            }
+            
+        });
+        
+        btn_cadastrar_prova.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                
+                Prova prova = new Prova();
+                ProvaDAOJDBC salvar = new ProvaDAOJDBC();
+                prova.setBimestre(Integer.parseInt(txt_bimestre_cadastro.getText()));
+                prova.setAno(Integer.parseInt(txt_ano_cadastro.getText()));
+                prova.setSemestre(Integer.parseInt(txt_semestre_cadastro.getText()));
+                prova.setNota(Double.parseDouble(txt_nota_cadastro.getText()));
+                prova.setTipo(Integer.parseInt(txt_tipo_cadastro.getText()));
+                
+                CoordenadorDAOJDBC cord = new CoordenadorDAOJDBC();
+                int idDisciplina = cord.retornarIdDisciplina(cb_disc_registro_prova.getSelectionModel().getSelectedItem());
+       
+                salvar.registrarProva(prova, idDisciplina);
+                Tela_DadosProf.toFront();
+            }
+   
+        });
+        
+        btn_cancelar_prova.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                Tela_DadosProf.toFront();
+            }
+   
         });
         
         

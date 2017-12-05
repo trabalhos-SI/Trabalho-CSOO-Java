@@ -110,4 +110,26 @@ public class ProvaDAOJDBC extends DAOBaseJDBC implements ProvaDAO{
         }
     }
     
+    public void registrarProva(Prova prova, int idDisciplina){
+        
+        String consulta = "INSERT INTO Prova(Bimestre, Ano, Semestre, idDisciplina, Nota, Tipo) "
+                + "VALUES(?, ?, ?, ?, ?, ?)";
+        
+        try{
+            PreparedStatement stmt = conn.prepareStatement(consulta);
+            stmt.setInt(1, prova.getBimestre());
+            stmt.setInt(2, prova.getAno());
+            stmt.setInt(3, prova.getSemestre());
+            stmt.setInt(4, idDisciplina);
+            stmt.setDouble(5, prova.getNota());
+            stmt.setInt(6, prova.getTipo());
+            stmt.executeUpdate();
+            stmt.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ProvaDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      
+    }
+    
 }
