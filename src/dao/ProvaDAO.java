@@ -19,5 +19,7 @@ public interface ProvaDAO {
     public ObservableList<String> listarIdProvas();
     public void MontarQuestaoProva(int idquestao, int idProva);
     public void registrarProva(Prova prova, int idDisciplina);
+    public void deletarProva(Prova prova);
+    public boolean buscarProva(Prova prova);
 
 }

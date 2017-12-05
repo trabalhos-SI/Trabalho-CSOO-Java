@@ -16,14 +16,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 import javax.swing.JOptionPane;
-import javax.swing.ScrollPaneConstants;
 import modelo.Discursiva;
 
 /**
@@ -53,21 +50,19 @@ public class TelaQuestaoDiscController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        
-        
+  
         //COMBOBOX DE DIFICULDADE
         check_dificuldade.setTooltip(new Tooltip("Nível da questão"));
         check_dificuldade.setValue( "" );
         observandolista = FXCollections.observableArrayList("1", "2", "3", "4", "5");
         check_dificuldade.setItems(observandolista);
         //
-        
-        
-        
+  
         btn_cadastrar.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
@@ -87,7 +82,7 @@ public class TelaQuestaoDiscController implements Initializable {
   
             }
   
-        });
+        });//FIM BTN_CADASTRAR
         
         btn_cancelar.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
@@ -95,10 +90,8 @@ public class TelaQuestaoDiscController implements Initializable {
                 
                 tela_cadastro_disc.getScene().getWindow().hide();
             }
-            
-        });
-    
-    }    
+        });// FIM BTN_CANCELAR
+    }// FIM INITIALIZE    
 
     
     @FXML

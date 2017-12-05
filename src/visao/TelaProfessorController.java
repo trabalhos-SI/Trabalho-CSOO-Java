@@ -14,8 +14,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -26,7 +24,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -35,16 +32,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import javax.swing.Action;
 import javax.swing.JOptionPane;
 import modelo.Aluno;
 import modelo.AlunoHasDisciplina;
 import modelo.Disciplina;
 import modelo.Professor;
 import modelo.Prova;
-import modelo.Usuario;
 import static visao.TelaLoginController.usuario;
 
 
@@ -58,10 +52,6 @@ public class TelaProfessorController implements Initializable {
     @FXML
     private AnchorPane Tela_DisciplinaProf;
     @FXML
-    private Label lb_tel1;
-    @FXML
-    private Label lbTeste11;
-    @FXML
     private TableColumn<AlunoHasDisciplina, String> cl_disciplinaProf;
     @FXML
     private TableColumn<?, ?> cl_prova1Prof;
@@ -74,19 +64,9 @@ public class TelaProfessorController implements Initializable {
     @FXML
     private TableColumn<?, ?> cl_mediaFinalProf;
     @FXML
-    private Label lb;
-    @FXML
     private AnchorPane Tela_QuestoesProf;
     @FXML
-    private Label lb_tel11;
-    @FXML
-    private Label lbTeste111;
-    @FXML
     private AnchorPane Tela_DadosProf;
-    @FXML
-    private Label lb_tel;
-    @FXML
-    private Label lbTeste1;
     @FXML
     private Label lb_nomeProf;
     @FXML
@@ -126,10 +106,6 @@ public class TelaProfessorController implements Initializable {
     @FXML
     private AnchorPane Tela_registrar_prova;
     @FXML
-    private Label lb_tel111;
-    @FXML
-    private Label lbTeste1111;
-    @FXML
     private ComboBox<String> cb_disc_registro_prova;
     @FXML
     private TextField txt_bimestre_cadastro;
@@ -145,6 +121,38 @@ public class TelaProfessorController implements Initializable {
     private Button btn_cadastrar_prova;
     @FXML
     private Button btn_cancelar_prova;
+    @FXML
+    private Button btn_deletar_prova;
+    @FXML
+    private AnchorPane Tela_deletar_prova;
+    @FXML
+    private Button btn_excluir_prova;
+    @FXML
+    private TextField txt_id_prova;
+    @FXML
+    private Label lb_tel1;
+    @FXML
+    private Label lbTeste11;
+    @FXML
+    private Label lb;
+    @FXML
+    private Label lb_tel11;
+    @FXML
+    private Label lbTeste111;
+    @FXML
+    private Label lb_tel111;
+    @FXML
+    private Label lbTeste1111;
+    @FXML
+    private Label lb_tel1111;
+    @FXML
+    private Label lbTeste11111;
+    @FXML
+    private Button btn_cancelar_excluir_prova;
+    @FXML
+    private Label lb_tel;
+    @FXML
+    private Label lbTeste1;
     
     /**
      * Initializes the controller class.
@@ -169,49 +177,39 @@ public class TelaProfessorController implements Initializable {
         
         
         // USANDO O CHOICEBOX
-        
         cb_teste.setTooltip(new Tooltip("Selecione a disciplina"));
         cb_teste.setValue( "" );
         cb_teste.setItems(FXCollections.observableArrayList(professorjdbc.listarDisciplinas(professor)));
 
-        
-        
         btn_dadosProf.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
                 
                 Tela_DadosProf.toFront();
             }
-          });
+          });//FIMBTN_DADOSPROF
         
         btn_disciplinaProf.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
                
                 Tela_DisciplinaProf.toFront();
-                
             }
-    
-        });
+        });//FIM BTN_DISCIPLINAPROF
         
         btn_QuestaoProf.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
                 
                 Tela_QuestoesProf.toFront();
-            }
-            
-            
-        });
+            }  
+        });//FIM BTN_QUESTAOPROF
         
         
         btn_criar_questao.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
-            
-            
             @Override
             public void handle(ActionEvent event){
-                
-
+ 
                 if(check_dis.selectedProperty().getValue() == false && check_ob.selectedProperty().getValue() == false){
                     
                     JOptionPane.showMessageDialog(null, "Por favor, escolha uma das duas opções!");
@@ -237,7 +235,6 @@ public class TelaProfessorController implements Initializable {
                         }catch(IOException ex){
                             JOptionPane.showMessageDialog(null, "erro aqui: " + ex);
                         }// FIM DO CATCH
-                        //btnLogar.getScene().getWindow().hide();
                         
                     }else{
                         
@@ -256,18 +253,14 @@ public class TelaProfessorController implements Initializable {
                         }catch(IOException ex){
                             JOptionPane.showMessageDialog(null, "erro aqui: " + ex);
                         }// FIM DO CATCH
-                        //btnLogar.getScene().getWindow().hide();              
-                        
-                        
-                        
+     
                     }// FIM DO ELSE
-                    
-                    
+         
                 }// FIM DO ELSE
                 
             }//FIM DO HANDLE EVENT
             
-        });
+        });//FIM BTN_CRIAR_QUESTAO
         
         
         btn_montar_prova.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -288,12 +281,8 @@ public class TelaProfessorController implements Initializable {
                         }catch(IOException ex){
                             JOptionPane.showMessageDialog(null, "erro aqui: " + ex);
                         }// FIM DO CATCH
-                        //btnLogar.getScene().getWindow().hide();
-                
-            }
-            
-            
-        });
+              }
+         });//FIM BTN_MONTAR_PROVA
         
         btn_registrar_prova.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
@@ -302,10 +291,8 @@ public class TelaProfessorController implements Initializable {
                 Tela_registrar_prova.toFront();
                 CoordenadorDAOJDBC disciplinas = new CoordenadorDAOJDBC();
                 cb_disc_registro_prova.setItems(FXCollections.observableArrayList(disciplinas.retornarDisciplinas()));
-                
-            }
-            
-        });
+             }
+        });//FIM BTN_REGISTRAR_PROVA
         
         btn_cadastrar_prova.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
@@ -336,6 +323,45 @@ public class TelaProfessorController implements Initializable {
    
         });
         
+        btn_deletar_prova.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                
+                Tela_deletar_prova.toFront();
+            }
+    
+        });
+        
+        btn_excluir_prova.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                
+                int numId = Integer.parseInt(txt_id_prova.getText());
+                Prova prova = new Prova();
+                ProvaDAOJDBC provadao = new ProvaDAOJDBC();
+                prova.setIdProva(numId);
+                if(provadao.buscarProva(prova) == true){
+                    
+                    provadao.deletarProva(prova);
+                    JOptionPane.showMessageDialog(null, "Prova deletada!");
+                    txt_id_prova.setText("");
+                }else{
+                    
+                    JOptionPane.showMessageDialog(null, "Prova Não encontrada!");
+                    txt_id_prova.setText("");
+                }
+            }
+     
+        });
+        
+        btn_cancelar_excluir_prova.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                txt_id_prova.setText("");
+                Tela_DadosProf.toFront();
+            }
+            
+        });
         
     }
 

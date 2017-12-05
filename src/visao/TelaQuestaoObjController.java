@@ -56,11 +56,12 @@ public class TelaQuestaoObjController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        
+          
         //COMBOBOX DE DIFICULDADE
         check_dificuldade.setTooltip(new Tooltip("Nível da questão"));
         check_dificuldade.setValue( "" );
@@ -74,8 +75,7 @@ public class TelaQuestaoObjController implements Initializable {
         observandolista = FXCollections.observableArrayList("1", "2", "3", "4", "5");
         check_alt_correta.setItems(observandolista);
         //
-        
-        
+  
         btn_cadastrar.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
@@ -98,11 +98,9 @@ public class TelaQuestaoObjController implements Initializable {
                 questaoOb.incluirObjetiva(obj);
                 
                 JOptionPane.showMessageDialog(null, "questao cadastrada");
-                
-                
+  
             }
-    
-        });
+         });// FIM BTN_CADASTRAR
         
         btn_cancelar.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
@@ -110,25 +108,16 @@ public class TelaQuestaoObjController implements Initializable {
                 
                 btn_cancelar.getScene().getWindow().hide();
             }
-            
-            
-        });
-        
-        
-        
-    }
-    
-    
+         });// FIM BTN_CANCELAR
+    }// FIM INITIALIZE
     
     
     public void selecionaNivel(){
         String nome = check_dificuldade.getSelectionModel().getSelectedItem();
-        System.out.println(nome);
     }
     
     public void selecionaAlternativaCorreta(){
         String nome = check_alt_correta.getSelectionModel().getSelectedItem();
-        System.out.println(nome);       
     }
     
 }

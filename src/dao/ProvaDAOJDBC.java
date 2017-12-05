@@ -132,4 +132,47 @@ public class ProvaDAOJDBC extends DAOBaseJDBC implements ProvaDAO{
       
     }
     
+    public boolean buscarProva(Prova prova){
+        
+        String consulta = "SELECT * FROM Prova WHERE idProva = ?";
+        
+        try{
+            PreparedStatement stmt = conn.prepareStatement(consulta);
+            stmt.setInt(1, prova.getIdProva());
+            ResultSet resultado = stmt.executeQuery();
+            
+            if(resultado.next()){
+                return true;
+            }
+   
+        } catch (SQLException ex) {
+            Logger.getLogger(ProvaDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return false;
+  
+    }
+    
+    public void deletarProva(Prova prova){
+        
+        String consulta = "DELETE FROM QuestaoProva WHERE Prova_idProva = ?";
+        String consulta2 = "DELETE FROM Prova WHERE idProva = ?";
+        
+        try{
+            PreparedStatement stmt = conn.prepareStatement(consulta);
+            stmt.setInt(1, prova.getIdProva());
+            stmt.executeUpdate();
+            stmt.close();
+            stmt = conn.prepareStatement(consulta2);
+            stmt.setInt(1, prova.getIdProva());
+            stmt.executeUpdate();
+            stmt.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ProvaDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   
+    }
+    
+   
+    
 }

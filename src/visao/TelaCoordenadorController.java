@@ -135,13 +135,15 @@ public class TelaCoordenadorController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 
-                
-                int idDisc = coordenador.retornarIdDisciplina(cb_disciplinas.getSelectionModel().getSelectedItem());
+                if(txt_buscar_matricula.getText().equals("")){
+                    JOptionPane.showMessageDialog(null, "Aluno não selecionado!");
+                }else{
+                    int idDisc = coordenador.retornarIdDisciplina(cb_disciplinas.getSelectionModel().getSelectedItem());
                 int idAlu = coordenador.retornarIdAluno(txt_buscar_matricula.getText());
                 coordenador.matricularAluno(idDisc, idAlu);
                 JOptionPane.showMessageDialog(null, "Aluno matriculado com sucesso!");
+                } 
             }
-        
         });
         
         btn_dados_coord.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -150,8 +152,7 @@ public class TelaCoordenadorController implements Initializable {
                 
                 pane_dados.toFront();
             }
-            
-            
+
         });
         
         btn_matricular_aluno.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
